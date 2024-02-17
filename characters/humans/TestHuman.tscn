@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq5ipj71mxvu3"]
+[gd_scene load_steps=4 format=3 uid="uid://bq5ipj71mxvu3"]
 
-[ext_resource type="Script" path="res://characters/Entity.cs" id="1_axnhh"]
+[ext_resource type="Script" path="res://Navigation.cs" id="1_kwd8l"]
+[ext_resource type="Texture2D" uid="uid://7semaolwl2f0" path="res://assets/critters/boar/boar_SE_idle_2.png" id="2_ngx4h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp5vp"]
 
 [node name="TestHuman" type="CharacterBody2D"]
-script = ExtResource("1_axnhh")
+script = ExtResource("1_kwd8l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fp5vp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ngx4h")

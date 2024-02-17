@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>DemonTowerDefense</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="characters\" />
+  </ItemGroup>
 </Project>
