@@ -27,9 +27,9 @@ public partial class Game : Node2D
 
 	private void SpawnHuman()
 	{
-		Navigation human = _humans.RandomElementByWeight(e => e.Value).Key.Instantiate<Navigation>();
+		Entity human = _humans.RandomElementByWeight(e => e.Value).Key.Instantiate<Entity>();
 		human.Target = _target;
 		Node node = GetNode("TileMap/Spawn");
-		node.GetNode<Marker2D>(_rng.Next(1, node.GetChildCount()).ToString()).AddChild(human);
+		node.GetNode<Marker2D>(_rng.Next(1, node.GetChildCount() + 1).ToString()).AddChild(human);
 	}
 }

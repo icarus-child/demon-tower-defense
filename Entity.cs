@@ -15,7 +15,6 @@ public partial class Entity : CharacterBody2D
 	[Export] private int _wallMultiplier;
 	[Export] private int _enemyMultiplier;
 
-	[Export]
 	public Node2D Target;
 	[Export]
 	private float speed = 35;
