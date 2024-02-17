@@ -16,7 +16,7 @@ public partial class Game : Node2D
 
 	public override void _Ready()
 	{
-		RegisterHuman("res://characters/Humans/...", 0.5f);
+		RegisterHuman("res://characters/humans/TestHuman.tscn", 0.5f);
 		//RegisterHuman("res://characters/Humans/...", 0.5f);
 		//RegisterHuman("res://characters/Humans/...", 0.5f);
 		//RegisterHuman("res://characters/Humans/...", 0.5f);
