@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Game.cs" id="1_3ijct"]
 [ext_resource type="Script" path="res://CameraControl.cs" id="1_gmnbi"]
 [ext_resource type="TileSet" uid="uid://bb5y4dyturcv" path="res://assets/tiles/test_tiles.tres" id="1_um5e5"]
-[ext_resource type="Script" path="res://Navigation.cs" id="2_5bfge"]
+[ext_resource type="Script" path="res://Entity.cs" id="2_5bfge"]
 [ext_resource type="Texture2D" uid="uid://cfa8fbii25dj7" path="res://icon.svg" id="2_kq5ok"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4bjne"]
