@@ -13,3 +13,11 @@ shape = SubResource("CapsuleShape2D_fp5vp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ngx4h")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+max_neighbors = 20
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true

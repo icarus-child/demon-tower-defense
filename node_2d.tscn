@@ -38,10 +38,12 @@ position = Vector2(230, -3)
 [node name="4" type="Marker2D" parent="TileMap/Spawn"]
 position = Vector2(13, 103)
 
-[node name="Unit" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Target" type="Marker2D" parent="TileMap"]
+position = Vector2(591, 307)
+
+[node name="Unit" type="CharacterBody2D" parent="."]
 position = Vector2(-58, 39)
 script = ExtResource("2_5bfge")
-target = NodePath("../Target")
 
 [node name="Sprite2D" type="Sprite2D" parent="Unit"]
 scale = Vector2(0.165813, 0.165813)
@@ -57,9 +59,6 @@ debug_enabled = true
 [node name="Timer" type="Timer" parent="Unit"]
 wait_time = 0.1
 autostart = true
-
-[node name="Target" type="Marker2D" parent="."]
-position = Vector2(93, -67)
 
 [connection signal="timeout" from="TileMap/Spawn" to="." method="SpawnHuman"]
 [connection signal="timeout" from="Unit/Timer" to="Unit" method="CreatePath"]
