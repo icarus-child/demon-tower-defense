@@ -17,7 +17,6 @@ public partial class Navigation : CharacterBody2D
 	{
 		Vector2 direction = ToLocal(navigationAgent.GetNextPathPosition()).Normalized();
 		Velocity = direction * speed;
-		GD.Print(Velocity);
 		MoveAndSlide();
 	}
 	
