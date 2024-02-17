@@ -16,7 +16,7 @@ public partial class Entity : CharacterBody2D
 	[Export] private int _enemyMultiplier;
 
 	[Export]
-	private Node2D target;
+	public Node2D Target;
 	[Export]
 	private float speed = 35;
 	private NavigationAgent2D navigationAgent;
@@ -36,6 +36,6 @@ public partial class Entity : CharacterBody2D
 	
 	private void CreatePath()
 	{
-		navigationAgent.TargetPosition = target.GlobalPosition;
+		navigationAgent.TargetPosition = Target.GlobalPosition;
 	}
 }
