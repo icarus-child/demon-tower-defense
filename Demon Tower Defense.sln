@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demon Tower Defense", "Demon Tower Defense.csproj", "{BFFB1072-0E2C-4D57-94E2-073D2B9ED795}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demon Tower Defense", "Demon Tower Defense.csproj", "{8C8F7581-BEA3-4526-9B3E-5FC8F4913C87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BFFB1072-0E2C-4D57-94E2-073D2B9ED795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFFB1072-0E2C-4D57-94E2-073D2B9ED795}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFFB1072-0E2C-4D57-94E2-073D2B9ED795}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{BFFB1072-0E2C-4D57-94E2-073D2B9ED795}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{BFFB1072-0E2C-4D57-94E2-073D2B9ED795}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{BFFB1072-0E2C-4D57-94E2-073D2B9ED795}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{8C8F7581-BEA3-4526-9B3E-5FC8F4913C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C8F7581-BEA3-4526-9B3E-5FC8F4913C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C8F7581-BEA3-4526-9B3E-5FC8F4913C87}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{8C8F7581-BEA3-4526-9B3E-5FC8F4913C87}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{8C8F7581-BEA3-4526-9B3E-5FC8F4913C87}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{8C8F7581-BEA3-4526-9B3E-5FC8F4913C87}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
