@@ -12,12 +12,11 @@
 script = ExtResource("1_3ijct")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
 script = ExtResource("1_gmnbi")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
-position = Vector2(-16, 11)
+position = Vector2(-576, -324)
 tile_set = ExtResource("1_um5e5")
 format = 2
 layer_0/name = "Base"
@@ -26,19 +25,19 @@ layer_0/tile_data = PackedInt32Array(589869, 196608, 0, 524333, 196608, 0, 45879
 [node name="Spawn" type="Timer" parent="TileMap"]
 
 [node name="1" type="Marker2D" parent="TileMap/Spawn"]
-position = Vector2(370, 333)
+position = Vector2(-196, -6)
 
 [node name="2" type="Marker2D" parent="TileMap/Spawn"]
-position = Vector2(576, 221)
+position = Vector2(14, -112)
 
 [node name="3" type="Marker2D" parent="TileMap/Spawn"]
-position = Vector2(791, 333)
+position = Vector2(230, -3)
 
 [node name="4" type="Marker2D" parent="TileMap/Spawn"]
-position = Vector2(575, 443)
+position = Vector2(13, 103)
 
 [node name="Unit" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(574, 404)
+position = Vector2(-58, 39)
 script = ExtResource("2_5bfge")
 target = NodePath("../Target")
 
@@ -58,6 +57,6 @@ wait_time = 0.1
 autostart = true
 
 [node name="Target" type="Marker2D" parent="."]
-position = Vector2(632, 276)
+position = Vector2(93, -67)
 
 [connection signal="timeout" from="Unit/Timer" to="Unit" method="CreatePath"]
