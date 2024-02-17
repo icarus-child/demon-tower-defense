@@ -15,6 +15,7 @@ public partial class Navigation : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (navigationAgent.IsNavigationFinished()) return;
 		Vector2 direction = ToLocal(navigationAgent.GetNextPathPosition()).Normalized();
 		Velocity = direction * speed;
 		MoveAndSlide();
