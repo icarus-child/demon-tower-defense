@@ -440,10 +440,6 @@ sources/0 = SubResource("TileSetAtlasSource_nr0x8")
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("1_m2eid")
-_mouseThreshold = Vector2(550, 200)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_bjmte")
 format = 2
