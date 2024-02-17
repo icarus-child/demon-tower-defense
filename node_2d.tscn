@@ -8,6 +8,10 @@
 
 [node name="Game" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_m2eid")
+_mouseThreshold = Vector2(550, 200)
+
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 position = Vector2(-16, 11)
