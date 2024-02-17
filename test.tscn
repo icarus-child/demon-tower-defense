@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://duwwjqbwem73f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player UI" type="CanvasLayer" parent="."]
+
+[node name="troops" type="Control" parent="Player UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="currency" type="Control" parent="Player UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="info" type="Control" parent="Player UI"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Player UI/info"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 100.0
+scale = Vector2(1, 0.98641)
+metadata/_edit_use_anchors_ = true
