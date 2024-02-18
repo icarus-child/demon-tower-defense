@@ -149,19 +149,6 @@ position = Vector2(1.5, -25.5)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("4_78goc")
 
-[node name="Demon2" parent="Game/TileMap/Portal" node_paths=PackedStringArray("Portal") instance=ExtResource("7_esb70")]
-position = Vector2(0, 26)
-Portal = NodePath("..")
-
-[node name="Demon" parent="Game/TileMap/Portal" node_paths=PackedStringArray("Portal") instance=ExtResource("7_esb70")]
-position = Vector2(-33, -9)
-Portal = NodePath("..")
-
-[node name="Demon3" parent="Game/TileMap/Portal" node_paths=PackedStringArray("Portal") instance=ExtResource("9_54up0")]
-position = Vector2(34, -1)
-_ranged = false
-Portal = NodePath("..")
-
 [node name="HealZone" type="Area2D" parent="Game/TileMap/Portal"]
 position = Vector2(0, -2)
 scale = Vector2(0.0654148, 0.0654148)
@@ -172,6 +159,15 @@ texture = ExtResource("7_pp34u")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/TileMap/Portal/HealZone"]
 polygon = PackedVector2Array(0, 504.473, 259.88, 489.186, 504.473, 443.325, 749.066, 351.602, 901.936, 244.593, 993.659, 122.296, 1024.23, -30.5741, 947.798, -198.732, 825.501, -305.741, 642.056, -397.464, 382.176, -473.899, 15.2871, -519.76, -366.889, -473.899, -565.621, -428.038, -764.353, -336.315, -947.798, -198.732, -1024.23, -30.5741, -963.085, 183.445, -764.353, 336.315, -504.473, 443.325, -259.88, 489.186)
+
+[node name="Demon" parent="Game/TileMap/Portal" instance=ExtResource("7_esb70")]
+position = Vector2(-40.9999, -6.99995)
+
+[node name="Demon2" parent="Game/TileMap/Portal" instance=ExtResource("7_esb70")]
+position = Vector2(42.9999, -7.99995)
+
+[node name="Demon3" parent="Game/TileMap/Portal" instance=ExtResource("9_54up0")]
+position = Vector2(1.99999, 18)
 
 [node name="UI" type="CanvasLayer" parent="Game"]
 

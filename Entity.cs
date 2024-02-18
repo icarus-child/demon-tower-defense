@@ -204,7 +204,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 
 	private void CreatePath()
 	{
-		if (Target is null) return;
+		if (Target is null || !IsInstanceValid(Target)) return;
 		_navigationAgent.TargetPosition = Target.GlobalPosition;
 	}
 
