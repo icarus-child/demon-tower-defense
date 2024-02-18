@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://di4op6pj6ffpe" path="res://assets/tiles/ground_tiles.png" id="3_pnjff"]
 [ext_resource type="Texture2D" uid="uid://dvh2qc02a1rw5" path="res://assets/tiles/portal.png" id="4_78goc"]
 [ext_resource type="Script" path="res://Portal.cs" id="4_i8p2u"]
-[ext_resource type="PackedScene" path="res://characters/Barricade.tscn" id="5_20ihc"]
+[ext_resource type="PackedScene" uid="uid://bp5oum32dsqvu" path="res://characters/Barricade.tscn" id="5_20ihc"]
 [ext_resource type="Texture2D" uid="uid://b53lvqhm3s5e2" path="res://assets/tiles/spritesheet_10.png" id="5_jiwfl"]
 [ext_resource type="PackedScene" uid="uid://c2xm8gbhlxv2v" path="res://characters/demons/LilGuy.tscn" id="7_esb70"]
 [ext_resource type="Texture2D" uid="uid://bjatewb1wnf05" path="res://assets/tiles/hell_floor.png" id="7_pp34u"]
