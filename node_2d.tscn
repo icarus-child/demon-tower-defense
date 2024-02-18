@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxdurw27p7yyq"]
+[gd_scene load_steps=20 format=3 uid="uid://bxdurw27p7yyq"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_3ijct"]
 [ext_resource type="Script" path="res://CameraControl.cs" id="1_gmnbi"]
@@ -85,29 +85,23 @@ layer_1/y_sort_enabled = true
 layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array(589830, 131074, 0, 327687, 131074, 0, 458755, 262146, 0, 131080, 2, 0, -131066, 262146, 0, -262142, 131074, 0, -131079, 131074, 0, 327674, 131074, 0, 589820, 2, 0, -262138, 131074, 0, -393219, 262146, 0, 131065, 262146, 0, 524288, 131074, 0)
 
-[node name="Barricade" parent="Game/TileMap" instance=ExtResource("5_20ihc")]
-position = Vector2(-2415.36, 550.334)
-
 [node name="Barricade2" parent="Game/TileMap" instance=ExtResource("5_20ihc")]
-position = Vector2(-1299.4, 1314.69)
+position = Vector2(-2124.9, -15.2871)
 
 [node name="Barricade3" parent="Game/TileMap" instance=ExtResource("5_20ihc")]
-position = Vector2(-15.2871, 2124.9)
+position = Vector2(-1131.24, 1406.41)
 
 [node name="Barricade4" parent="Game/TileMap" instance=ExtResource("5_20ihc")]
-position = Vector2(1391.12, 1268.83)
+position = Vector2(886.649, 1758.01)
 
 [node name="Barricade5" parent="Game/TileMap" instance=ExtResource("5_20ihc")]
-position = Vector2(2552.94, 473.899)
+position = Vector2(2170.76, 718.492)
 
 [node name="Barricade6" parent="Game/TileMap" instance=ExtResource("5_20ihc")]
-position = Vector2(1314.69, -259.88)
-
-[node name="Barricade7" parent="Game/TileMap" instance=ExtResource("5_20ihc")]
-position = Vector2(-30.5742, -871.362)
+position = Vector2(1406.41, -703.205)
 
 [node name="Barricade8" parent="Game/TileMap" instance=ExtResource("5_20ihc")]
-position = Vector2(-1070.09, -259.88)
+position = Vector2(-443.325, -1115.96)
 
 [node name="Spawn" type="Timer" parent="Game/TileMap"]
 wait_time = 5.0

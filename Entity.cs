@@ -141,7 +141,8 @@ public partial class Entity : CharacterBody2D, IDamageable
 			if (_targetOptions.Count != 0) Target = GetClosestTargetable();
 			else if (EntityTeam == Team.Humans) Target = Portal;
 			else {
-				_sprite.Play("idle");
+				if (_sprite.Animation == "walk")
+					_sprite.Play("idle");
 				return;
 			}
 		}
