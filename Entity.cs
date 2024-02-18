@@ -49,6 +49,7 @@ public partial class Entity : CharacterBody2D
 		_aggroRange = GetNode<Area2D>("AggroRange");
 		_attackRange = GetNode<Area2D>("AttackRange");
 		_mouseClicker = GetNode<Area2D>("MouseClicker");
+        _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_aggroRange.BodyEntered += body => {
 			_targetOptions.Add(body);
 		};
@@ -59,18 +60,14 @@ public partial class Entity : CharacterBody2D
 			_canAttack = true;
 		};
 		_sprite.AnimationFinished += () => {
-			_animationFinished = true;
+			_sprite.Play("idle");
 		};
-        _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_sprite.Play("idle");
 		_mouseClicker.InputEvent += (viewport, @event, idx) =>
 		{
 			if (EntityTeam == Team.Humans || !@event.IsActionPressed("select")) return;
 			if (!_selected) _selected = true;
 		};
-
-		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_sprite.Play("walk");
+		_sprite.Play("idle");
     }
 
     public override void _Input(InputEvent @event)
@@ -109,17 +106,13 @@ public partial class Entity : CharacterBody2D
 
 		if (!_attackRange.OverlapsBody(Target))
 		{
-			GD.Print("AttackMove");
 			AttackMove();
 		} else {
 			// Attack
 			if (_canAttack) {
-				GD.Print("Attack");
 				_canAttack = false;
 				_attackCooldownTimer.Start();
-			} else {
-				if (_animationFinished)
-				_sprite.Play("idle");
+				_sprite.Play("attack");
 			}
 		}
 	}

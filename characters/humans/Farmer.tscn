@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bs3c6vvutmvgw"]
+[gd_scene load_steps=11 format=3 uid="uid://div4dag4qrnn4"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
 [ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_tunxx"]
@@ -30,10 +30,10 @@ region = Rect2(1536, 1024, 768, 1024)
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_165m1")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -57,11 +57,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s43w0"]
-
 [node name="Farmer" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_hw863")
+_health = 20.0
+_damage = 2.0
+_attackCooldown = 1.5
+speed = 35.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n4io4")
@@ -90,12 +92,5 @@ position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
 animation = &"attack"
-
-[node name="MouseClicker" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
-position = Vector2(0, -11.88)
-scale = Vector2(0.99, 0.99)
-shape = SubResource("CapsuleShape2D_s43w0")
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]
