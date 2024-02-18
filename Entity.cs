@@ -28,6 +28,7 @@ public partial class Entity : CharacterBody2D
 	private Area2D _aggroRange;
 	private Area2D _attackRange;
 	private readonly List<Node2D> _targetOptions = new();
+	private Area2D _mouseClicker;
 	private AnimatedSprite2D _sprite;
 	private Timer _attackCooldownTimer;
 	private bool _canAttack = false;
@@ -45,6 +46,7 @@ public partial class Entity : CharacterBody2D
 		_navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		_aggroRange = GetNode<Area2D>("AggroRange");
 		_attackRange = GetNode<Area2D>("AttackRange");
+		_mouseClicker = GetNode<Area2D>("MouseClicker");
 		_aggroRange.BodyEntered += body => {
 			_targetOptions.Add(body);
 		};
@@ -150,28 +152,3 @@ public partial class Entity : CharacterBody2D
 		QueueFree();
 	}
 }
-
-	/*public override void _Input(InputEvent @event)
-	{
-
-		if (EntityTeam == Team.Humans) return;
-		if (@event is InputEventMouseButton mouse && mouse.ButtonIndex == MouseButton.Left)
-			if (_sprite.HasPoint(mouse.Position))
-		{
-				GD.Print("aaaaaaaaaa");
-			{
-				_selected = true;
-			else
-			}
-			{
-
-				if (_selected)
-				{
-					GD.Print("pain");
-					_selected = false;
-					Target = Game.Cursor;
-				}
-			}
-		}
-	}*/
-

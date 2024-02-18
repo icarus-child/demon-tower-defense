@@ -17,6 +17,11 @@ public partial class CameraControl : Camera2D
 		Position = Position.Lerp(dist, (float) delta);
 	}
 
+	public Vector2 GetZoom()
+	{
+		return new Vector2(1 / Zoom.X, 1 / Zoom.Y);
+	}
+
 	public override void _Input(InputEvent @event)
 	{
 		// Camera Zoom
@@ -26,10 +31,9 @@ public partial class CameraControl : Camera2D
 			Zoom = new Vector2(Zoom.X - _zoomStep, Zoom.Y - _zoomStep).Clamp(Vector2.One, new Vector2(_maxZoom, _maxZoom));
 
 		// Camera drag
-		Vector2 zoom = new Vector2(1 / Zoom.X, 1 / Zoom.Y);
 		if (@event.IsActionPressed("drag") && @event is InputEventMouseButton mouseButton)
-			_initialDragPos = Position + mouseButton.Position * zoom;
+			_initialDragPos = Position + mouseButton.Position * GetZoom();
 		if (Input.IsActionPressed("drag") && @event is InputEventMouseMotion mouseMotion)
-			Position = _initialDragPos - mouseMotion.Position  * zoom;
+			Position = _initialDragPos - mouseMotion.Position  * GetZoom();
 	}
 }
