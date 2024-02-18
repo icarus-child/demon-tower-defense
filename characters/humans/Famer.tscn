@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://div4dag4qrnn4"]
+
+[ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
+[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_tunxx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r22i7"]
+radius = 54.0093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
+radius = 22.0907
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12x8n"]
+atlas = ExtResource("2_tunxx")
+region = Rect2(0, 1024, 768, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_165m1"]
+atlas = ExtResource("2_tunxx")
+region = Rect2(2304, 1024, 768, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ognfs"]
+atlas = ExtResource("2_tunxx")
+region = Rect2(768, 1024, 768, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thn3f"]
+atlas = ExtResource("2_tunxx")
+region = Rect2(1536, 1024, 768, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12x8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_165m1")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ognfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thn3f")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Farmer" type="CharacterBody2D"]
+position = Vector2(-191, 179)
+collision_layer = 4
+script = ExtResource("1_hw863")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n4io4")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 2.0
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="AggroRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
+shape = SubResource("CircleShape2D_r22i7")
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_6ds64")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
+sprite_frames = SubResource("SpriteFrames_mp3y6")
+animation = &"walk"
+
+[connection signal="timeout" from="Timer" to="." method="CreatePath"]
