@@ -15,8 +15,6 @@ public partial class Entity : CharacterBody2D, IDamageable
 	[Export] private float _health;
 	[Export] private float _damage;
 	[Export] private double _attackCooldown;
-	[Export] private bool _doesAoe;
-	[Export] private float _aoeRange;
 	[Export] private float _wallMultiplier;
 	[Export] private float _enemyMultiplier;
 	[Export] private float speed;
@@ -179,6 +177,9 @@ public partial class Entity : CharacterBody2D, IDamageable
 		_health -= Mathf.Min(damage, _health);
 		if (_health == 0) Die();
 		// calculate targetting attacker
+		if ((Target == Portal || Target is Marker2D) && EntityTeam is Team.Humans) {
+			
+		}
 	}
 	
 	private void Die()

@@ -12,7 +12,7 @@ radius = 6.0
 radius = 54.0093
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
-radius = 13.0
+radius = 53.0848
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7jra"]
 atlas = ExtResource("2_nwplv")
@@ -63,7 +63,7 @@ animations = [{
 [node name="Demon" type="CharacterBody2D"]
 script = ExtResource("1_eovuy")
 EntityTeam = 1
-_health = 150.0
+_health = 80.0
 _damage = 40.0
 _attackCooldown = 1.5
 _wallMultiplier = 1.0
