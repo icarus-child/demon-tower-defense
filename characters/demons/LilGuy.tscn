@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://e8ve6b35t152"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_5ccqh"]
-[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_py47k"]
+[ext_resource type="Texture2D" uid="uid://elj4dao3qmg7" path="res://assets/dudes/litteguy.png" id="2_dglxr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yvgg4"]
 
@@ -14,30 +14,27 @@ radius = 54.0093
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
 radius = 13.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_12x8n"]
-atlas = ExtResource("2_py47k")
-region = Rect2(0, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl0gv"]
+atlas = ExtResource("2_dglxr")
+region = Rect2(2304, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_165m1"]
-atlas = ExtResource("2_py47k")
-region = Rect2(2304, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ckjq"]
+atlas = ExtResource("2_dglxr")
+region = Rect2(1536, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ognfs"]
-atlas = ExtResource("2_py47k")
-region = Rect2(768, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq84s"]
+atlas = ExtResource("2_dglxr")
+region = Rect2(0, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_thn3f"]
-atlas = ExtResource("2_py47k")
-region = Rect2(1536, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_461v1"]
+atlas = ExtResource("2_dglxr")
+region = Rect2(768, 0, 768, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_12x8n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_165m1")
+"texture": SubResource("AtlasTexture_cl0gv")
 }],
 "loop": true,
 "name": &"attack",
@@ -45,18 +42,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ognfs")
+"texture": SubResource("AtlasTexture_1ckjq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq84s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_thn3f")
+"texture": SubResource("AtlasTexture_461v1")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [node name="Demon" type="CharacterBody2D"]
-collision_mask = 3
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_5ccqh")
 EntityTeam = 1
 speed = 40.0
@@ -97,5 +103,6 @@ position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
 animation = &"walk"
+frame_progress = 0.212228
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]

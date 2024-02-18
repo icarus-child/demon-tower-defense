@@ -28,7 +28,8 @@ public partial class Game : Node2D
 		_portal = GetNode<StaticBody2D>("TileMap/Portal");
 		_camera = GetNode<CameraControl>("Camera2D");
 
-		RegisterDemon("res://characters/demons/Demon.tscn", 0.5f);
+		RegisterDemon("res://characters/demons/LilGuy.tscn", 0.5f);
+		RegisterDemon("res://characters/demons/AngelThing.tscn", 0.5f);
 
 		RegisterHuman("res://characters/humans/Farmer.tscn", 0.3f);
 		RegisterHuman("res://characters/humans/SaltyBoi.tscn", 0.25F);

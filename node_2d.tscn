@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxdurw27p7yyq"]
+[gd_scene load_steps=11 format=3 uid="uid://bxdurw27p7yyq"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_3ijct"]
 [ext_resource type="Script" path="res://CameraControl.cs" id="1_gmnbi"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dvh2qc02a1rw5" path="res://assets/tiles/portal.png" id="4_78goc"]
 [ext_resource type="Script" path="res://healthBar.gd" id="5_i8ss5"]
 [ext_resource type="Texture2D" uid="uid://dtroxnok8lhvi" path="res://assets/UI assets/healthbarUnder.png" id="6_icv6o"]
-[ext_resource type="PackedScene" uid="uid://e8ve6b35t152" path="res://characters/demons/Demon.tscn" id="7_esb70"]
+[ext_resource type="PackedScene" uid="uid://dt5cnusallb2l" path="res://characters/demons/LilGuy.tscn" id="7_esb70"]
 [ext_resource type="Texture2D" uid="uid://cr64v0cntdohh" path="res://assets/UI assets/healthbarProgress.png" id="7_ij3uw"]
+[ext_resource type="PackedScene" uid="uid://brbftphc7k0tr" path="res://characters/demons/AngelThing.tscn" id="9_54up0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_061b6"]
 radius = 4.66321
@@ -105,9 +106,9 @@ texture_progress = ExtResource("7_ij3uw")
 script = ExtResource("5_i8ss5")
 
 [node name="Demon" parent="." instance=ExtResource("7_esb70")]
-position = Vector2(-90, 41)
+position = Vector2(-92, 39)
 
-[node name="Demon2" parent="." instance=ExtResource("7_esb70")]
-position = Vector2(22, 72)
+[node name="Demon2" parent="." instance=ExtResource("9_54up0")]
+position = Vector2(9, 65)
 
 [connection signal="timeout" from="TileMap/Spawn" to="." method="SpawnHuman"]
