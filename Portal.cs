@@ -8,7 +8,7 @@ public partial class Portal : StaticBody2D, IDamageable
 
     public override void _Ready()
     {
-		_healthBar = GetNode<ProgressBar>("/root/Node/Game/Camera2D/Control/PortalHealth");
+		_healthBar = GetNode<ProgressBar>("/root/Node/Game/UI/PortalHealth");
     }
 
 	void IDamageable.TakeDamage(float damage, Node2D attacker) {
