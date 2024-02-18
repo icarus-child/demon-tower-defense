@@ -31,6 +31,7 @@ public partial class Entity : CharacterBody2D
 	private Area2D _mouseClicker;
 	private readonly List<Node2D> targetOptions = new();
 	private AnimatedSprite2D _sprite;
+	public Marker2D Cursor = new ();
 	private bool _selected;
 	
     public override void _Ready()
@@ -45,25 +46,29 @@ public partial class Entity : CharacterBody2D
 		aggroRange.BodyExited += body => {
 			targetOptions.Remove(body);
 		};
-		/*_mouseClicker.InputEvent += (viewport, @event, idx) =>
+		_mouseClicker.InputEvent += (viewport, @event, idx) =>
 		{
-			if (!@event.IsPressed()) return;
-
+			if (EntityTeam == Team.Humans || !@event.IsActionPressed("select")) return;
 			if (!_selected) _selected = true;
-			else
-			{
-				Target = Game.Cursor;
-				_selected = false;
-			}
-		};*/
+		};
 
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_sprite.Play("walk");
     }
 
+    public override void _Input(InputEvent @event)
+    {
+	    if (_selected && @event.IsActionPressed("select"))
+	    {
+		    Cursor.GlobalPosition = GetGlobalMousePosition();
+		    Target = Cursor;
+		    _selected = false;
+	    }
+    }
+
     public override void _Process(double delta)
     {
-	    if (Target == null) return;
+	    if (Target == null || navigationAgent.IsNavigationFinished()) return;
 
 	    // Make this not shit later
 	    try {
