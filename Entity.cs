@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -48,7 +49,13 @@ public partial class Entity : CharacterBody2D
     public override void _Process(double delta)
     {
 	    if (Target == null) return;
-	    _sprite.FlipH = navigationAgent.GetNextPathPosition().X > ToGlobal(Position).X; // Make sprite face the target
+
+	    // Make this not shit later
+	    try {
+		    int i = navigationAgent.GetCurrentNavigationPathIndex() - 2;
+		    _sprite.FlipH = navigationAgent.GetCurrentNavigationPath()[i].X > ToGlobal(Position).X; // Make sprite face the target
+	    } catch (IndexOutOfRangeException e) {}
+
     }
 
 	public override void _PhysicsProcess(double delta)
