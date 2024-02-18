@@ -60,7 +60,8 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_popvf"]
 
 [node name="SaltyBoi" type="CharacterBody2D"]
-collision_layer = 4
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_ppq50")
 speed = 15.0
 
