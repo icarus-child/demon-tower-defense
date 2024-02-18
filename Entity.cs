@@ -48,7 +48,7 @@ public partial class Entity : CharacterBody2D
     public override void _Process(double delta)
     {
 	    if (Target == null) return;
-	    //_sprite.FlipV = Target.Position.X > Position.X; // Make sprite face the target
+	    _sprite.FlipH = Target.Position.X < Position.X; // Make sprite face the target
     }
 
 	public override void _PhysicsProcess(double delta)
