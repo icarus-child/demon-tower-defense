@@ -117,7 +117,10 @@ public partial class Entity : CharacterBody2D
 
 		if (!_attackRange.OverlapsBody(Target))
 		{
-			AttackMove();
+			if (EntityTeam == Team.Humans)
+				AttackMove();
+			else
+				Move();
 		} else {
 			// Attack
 			if (_canAttack) {
@@ -128,11 +131,13 @@ public partial class Entity : CharacterBody2D
 		}
 	}
 
-	// Attack Move implementation, need just a default Move implementation
 	private void Path()
 	{
 		// Pathing
-		if (_navigationAgent.IsNavigationFinished()) return;
+		if (_navigationAgent.GetNextPathPosition().DistanceTo(GlobalPosition) < 5) {
+			_sprite.Play("idle");
+			return;
+		}
 		Vector2 direction = ToLocal(_navigationAgent.GetNextPathPosition()).Normalized();
 		Velocity = direction * speed;
 		MoveAndSlide();
