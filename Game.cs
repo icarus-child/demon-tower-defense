@@ -56,7 +56,8 @@ public partial class Game : Node2D
 
     public override void _Process(double delta)
     {
-		GameTime += delta;
+		if (Portal.Lost) return;
+	    GameTime += delta;
 
 		var span = new TimeSpan(0, 0, (int) GameTime);
 		_clock.Text = string.Format("{0}:{1:00}", (int)span.TotalMinutes, span.Seconds);
