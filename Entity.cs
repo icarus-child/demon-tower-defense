@@ -127,6 +127,9 @@ public partial class Entity : CharacterBody2D, IDamageable
 				_canAttack = false;
 				_attackCooldownTimer.Start();
 				_sprite.Play("attack");
+				if (Target is IDamageable weezer) {
+					weezer.TakeDamage(_damage * ((Target is Entity) ? _enemyMultiplier : _wallMultiplier));
+				}
 			}
 		}
 	}
@@ -162,8 +165,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 
 	private Node2D GetClosestTargetable()
 	{
-		return _targetOptions.MinBy(node =>
-		{
+		return _targetOptions.MinBy(node => {
 			return node.GlobalPosition.DistanceTo(GlobalPosition);
 		});
 	}

@@ -16,7 +16,7 @@ public partial class Barrier : Node2D, IDamageable
 	{
 	}
 	
-	void IDamageable.TakeDamage(int damage)
+	void IDamageable.TakeDamage(float damage)
 	{
 		// never go below 0 hp
 		_health -= Mathf.Min(damage, _health);
