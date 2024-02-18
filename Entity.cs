@@ -110,7 +110,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (Target is null && _targetOptions.Count == 1)
+		if (Target is Marker2D && EndOfPathReached() && _targetOptions.Count == 1)
 		{
 			Target = GetClosestTargetable();
 		} else if (Target is null) {
@@ -139,7 +139,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 	private void Path()
 	{
 		// Pathing
-		if (_navigationAgent.GetNextPathPosition().DistanceTo(GlobalPosition) < 5) {
+		if (EndOfPathReached()) {
 			_sprite.Play("idle");
 			return;
 		}
@@ -148,6 +148,8 @@ public partial class Entity : CharacterBody2D, IDamageable
 		MoveAndSlide();
 		_sprite.Play("walk");
 	}
+	
+	private bool EndOfPathReached() => _navigationAgent.GetNextPathPosition().DistanceTo(GlobalPosition) < 5;
 
 	private void AttackMove()
 	{
@@ -184,4 +186,5 @@ public partial class Entity : CharacterBody2D, IDamageable
 		if (EntityTeam == Team.Humans) Game.AddSoul();
 		QueueFree();
 	}
+
 }
