@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://CameraControl.cs" id="1_vo5ee"]
 [ext_resource type="Texture2D" uid="uid://b03c63ndvsdqc" path="res://assets/isometric tileset/separated images/tile_060.png" id="3_axsfi"]
 [ext_resource type="Script" path="res://Barrier.cs" id="4_toigs"]
-[ext_resource type="PackedScene" uid="uid://div4dag4qrnn4" path="res://characters/humans/Famer.tscn" id="5_f0wib"]
+[ext_resource type="PackedScene" uid="uid://div4dag4qrnn4" path="res://characters/humans/Farmer.tscn" id="5_f0wib"]
 
 [node name="TestBarricade" type="Node2D"]
 
@@ -34,7 +34,7 @@ position = Vector2(0, -6)
 texture = ExtResource("3_axsfi")
 
 [node name="Farmer" parent="." node_paths=PackedStringArray("Portal") instance=ExtResource("5_f0wib")]
-position = Vector2(136, 129)
+position = Vector2(168, 95)
 Portal = NodePath("../Target")
 
 [node name="Target" type="Marker2D" parent="."]

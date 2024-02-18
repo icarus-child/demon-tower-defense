@@ -30,7 +30,7 @@ public partial class Game : Node2D
 
 		RegisterDemon("res://characters/demons/TestDemon.tscn", 0.5f);
 
-		RegisterHuman("res://characters/humans/TestHuman.tscn", 0.5f);
+		RegisterHuman("res://characters/humans/Farmer.tscn", 0.5f);
 	}
 
 	private void SpawnDemon()
