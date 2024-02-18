@@ -13,7 +13,6 @@ public partial class Portal : StaticBody2D, IDamageable
 
 	void IDamageable.TakeDamage(float damage, Node2D attacker) {
 		_health -= Mathf.Min(damage, _health);
-		GD.Print(_health);
 		_healthBar.Value = _health;
 		if (_health == 0) _lost = true;
 	}
