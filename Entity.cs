@@ -35,6 +35,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 	private bool _animationFinished = false;
 	private ProgressBar _healthBar;
 	private float _maxHealth;
+	private Area2D _healZone;
 	
     public override void _Ready()
     {
@@ -69,6 +70,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 		_attackRange = GetNode<Area2D>("AttackRange");
 		_mouseClicker = GetNode<Area2D>("MouseClicker");
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_healZone = GetNode<Area2D>("/root/Node/Game/TileMap/Portal/HealZone");
 		_aggroRange.BodyEntered += body => {
 			_targetOptions.Add(body);
 		};
@@ -86,7 +88,6 @@ public partial class Entity : CharacterBody2D, IDamageable
 			if (!@event.IsActionPressed("select")) return;
 			if (EntityTeam == Team.Humans)
 			{
-				GD.Print("Hit");
 				Game.Selected.Target = this;
 				Game.Selected._selected = false;
 				return;
@@ -115,6 +116,12 @@ public partial class Entity : CharacterBody2D, IDamageable
 
     public override void _Process(double delta)
     {
+		_healthBar.Value = (_health / _maxHealth) * 100;
+		if (Team.Demons == EntityTeam && _healZone.OverlapsBody(this))
+		{
+			_health += Mathf.Min((float) (2 * delta), _maxHealth - _health);
+		}
+
 		if (!IsInstanceValid(Target)) Target = null;
 		if (Target is null) {
 			if (_targetOptions.Count != 0) Target = GetClosestTargetable();
@@ -199,7 +206,6 @@ public partial class Entity : CharacterBody2D, IDamageable
 	void IDamageable.TakeDamage(float damage, Node2D attacker) {
 		// never go below 0 hp
 		_health -= Mathf.Min(damage, _health);
-		_healthBar.Value = (_health / _maxHealth) * 100;
 		if (_health == 0) Die();
 		// calculate targetting attacker
 		if ((Target == Portal || Target is Marker2D) && EntityTeam is Team.Humans) {

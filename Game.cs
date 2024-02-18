@@ -2,12 +2,12 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using DemonTowerDefense;
-using System.Reflection.Metadata;
 
 public partial class Game : Node2D
 {
 	[Export]
 	private static int _cost = 7;
+	[Export]
 	private static int _souls = _cost * 2;
 	private readonly Dictionary<PackedScene, float> _humans = new ();
 	private readonly Dictionary<PackedScene, float> _demons = new ();
@@ -15,9 +15,13 @@ public partial class Game : Node2D
 
 	private StaticBody2D _portal;
 	private CameraControl _camera;
+	private Timer _spawnTimer;
 	private static Label _soulInfo;
+	private static Label _clock;
 	public static Entity Selected;
 	public static double GameTime = 0;
+
+	public int by10 = 0;
 
 	private void RegisterHuman(String scene, float spawnChance)
 	{
@@ -33,7 +37,9 @@ public partial class Game : Node2D
 	{
 		_portal = GetNode<StaticBody2D>("TileMap/Portal");
 		_camera = GetNode<CameraControl>("Camera2D");
-		_soulInfo = GetNode<Label>("../Control/Souls");
+		_soulInfo = GetNode<Label>("Camera2D/Control/Souls");
+		_clock = GetNode<Label>("Camera2D/Control/Clock");
+		_spawnTimer = GetNode<Timer>("TileMap/Spawn");
 
 		RegisterDemon("res://characters/demons/LilGuy.tscn", 0.3f);
 		RegisterDemon("res://characters/demons/AngelThing.tscn", 0.2f);
@@ -50,6 +56,11 @@ public partial class Game : Node2D
     public override void _Process(double delta)
     {
 		GameTime += delta;
+
+		var span = new TimeSpan(0, 0, (int) GameTime); //Or TimeSpan.FromSeconds(seconds); (see Jakob C´s answer)
+		_clock.Text = string.Format("{0}:{1:00}", (int)span.TotalMinutes, span.Seconds);
+
+		// ramp the spawn time, I couldn't figure it out
     }
 
 	public static void AddSoul()

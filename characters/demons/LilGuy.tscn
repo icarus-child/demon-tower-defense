@@ -72,6 +72,8 @@ _enemyMultiplier = 1.0
 speed = 55.0
 
 [node name="MouseClicker" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
 position = Vector2(0, -11.88)
