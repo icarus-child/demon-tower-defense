@@ -1,13 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxdurw27p7yyq"]
+[gd_scene load_steps=8 format=3 uid="uid://bxdurw27p7yyq"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_3ijct"]
 [ext_resource type="Script" path="res://CameraControl.cs" id="1_gmnbi"]
 [ext_resource type="TileSet" uid="uid://bb5y4dyturcv" path="res://assets/tiles/test_tiles.tres" id="1_um5e5"]
 [ext_resource type="Texture2D" uid="uid://dvh2qc02a1rw5" path="res://assets/tiles/portal.png" id="4_78goc"]
-[ext_resource type="Script" path="res://healthBar.gd" id="5_i8ss5"]
-[ext_resource type="Texture2D" uid="uid://dtroxnok8lhvi" path="res://assets/UI assets/healthbarUnder.png" id="6_icv6o"]
 [ext_resource type="PackedScene" uid="uid://dt5cnusallb2l" path="res://characters/demons/LilGuy.tscn" id="7_esb70"]
-[ext_resource type="Texture2D" uid="uid://cr64v0cntdohh" path="res://assets/UI assets/healthbarProgress.png" id="7_ij3uw"]
 [ext_resource type="PackedScene" uid="uid://brbftphc7k0tr" path="res://characters/demons/AngelThing.tscn" id="9_54up0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_061b6"]
@@ -59,56 +56,25 @@ position = Vector2(1.5, -25.5)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("4_78goc")
 
-[node name="Player UI" type="CanvasLayer" parent="."]
+[node name="Demon" parent="TileMap/Portal" instance=ExtResource("7_esb70")]
+position = Vector2(-44, -4)
 
-[node name="troops" type="Control" parent="Player UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
+[node name="Demon2" parent="TileMap/Portal" instance=ExtResource("9_54up0")]
+position = Vector2(30, 7)
 
-[node name="info" type="Control" parent="Player UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 79.0
-offset_top = -101.0
-offset_right = -73.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-metadata/_edit_use_anchors_ = true
+[node name="Buy" type="Button" parent="."]
+offset_left = 119.0
+offset_top = 113.0
+offset_right = 249.0
+offset_bottom = 144.0
+text = "Buy Demon 7 $$"
 
-[node name="ColorRect" type="ColorRect" parent="Player UI/info"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -6.0
-offset_right = 1001.0
-offset_bottom = 94.0
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Player UI"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -188.0
-offset_top = 5.0
-offset_right = 262.0
-offset_bottom = 45.0
-grow_horizontal = 2
-value = 100.0
-nine_patch_stretch = true
-texture_under = ExtResource("6_icv6o")
-texture_progress = ExtResource("7_ij3uw")
-script = ExtResource("5_i8ss5")
-
-[node name="Demon" parent="." instance=ExtResource("7_esb70")]
-position = Vector2(-92, 39)
-
-[node name="Demon2" parent="." instance=ExtResource("9_54up0")]
-position = Vector2(9, 65)
+[node name="Souls" type="Label" parent="."]
+offset_left = 190.0
+offset_top = 85.0
+offset_right = 240.0
+offset_bottom = 108.0
+text = "Souls: 14"
 
 [connection signal="timeout" from="TileMap/Spawn" to="." method="SpawnHuman"]
+[connection signal="button_down" from="Buy" to="." method="SpawnDemon"]

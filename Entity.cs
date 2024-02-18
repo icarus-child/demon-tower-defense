@@ -172,7 +172,7 @@ public partial class Entity : CharacterBody2D
 	
 	private void Die()
 	{
-		if (EntityTeam == Team.Humans) Game.Souls++;
+		if (EntityTeam == Team.Humans) Game.AddSoul();
 		QueueFree();
 	}
 }
