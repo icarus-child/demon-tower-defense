@@ -1,20 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxdurw27p7yyq"]
+[gd_scene load_steps=11 format=3 uid="uid://bxdurw27p7yyq"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_3ijct"]
 [ext_resource type="Script" path="res://CameraControl.cs" id="1_gmnbi"]
 [ext_resource type="TileSet" uid="uid://bb5y4dyturcv" path="res://assets/tiles/test_tiles.tres" id="1_um5e5"]
+[ext_resource type="Texture2D" uid="uid://cfa8fbii25dj7" path="res://icon.svg" id="2_kq5ok"]
+[ext_resource type="Texture2D" uid="uid://dvh2qc02a1rw5" path="res://assets/tiles/portal.png" id="4_78goc"]
 [ext_resource type="Script" path="res://healthBar.gd" id="5_i8ss5"]
 [ext_resource type="Texture2D" uid="uid://dtroxnok8lhvi" path="res://assets/UI assets/healthbarUnder.png" id="6_icv6o"]
+[ext_resource type="PackedScene" uid="uid://dt5cnusallb2l" path="res://characters/demons/Demon.tscn" id="7_esb70"]
 [ext_resource type="Texture2D" uid="uid://cr64v0cntdohh" path="res://assets/UI assets/healthbarProgress.png" id="7_ij3uw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_061b6"]
+radius = 4.66321
+height = 18.6529
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3ijct")
-
-[node name="Target" type="Marker2D" parent="."]
-position = Vector2(15, -17)
-
-[node name="Cursor" type="Marker2D" parent="."]
-position = Vector2(-576, -324)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_gmnbi")
@@ -42,6 +43,27 @@ position = Vector2(230, -3)
 
 [node name="4" type="Marker2D" parent="TileMap/Spawn"]
 position = Vector2(13, 103)
+
+[node name="Portal" type="StaticBody2D" parent="TileMap"]
+position = Vector2(603, 314)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Portal"]
+position = Vector2(0.354859, -5.89505)
+rotation = 1.5708
+scale = Vector2(1.93, 1.93)
+shape = SubResource("CapsuleShape2D_061b6")
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Portal"]
+position = Vector2(1.5, -25.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_78goc")
+
+[node name="Cursor" type="Marker2D" parent="TileMap"]
+position = Vector2(-1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Cursor"]
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("2_kq5ok")
 
 [node name="Player UI" type="CanvasLayer" parent="."]
 
@@ -88,5 +110,8 @@ nine_patch_stretch = true
 texture_under = ExtResource("6_icv6o")
 texture_progress = ExtResource("7_ij3uw")
 script = ExtResource("5_i8ss5")
+
+[node name="Demon" parent="." instance=ExtResource("7_esb70")]
+position = Vector2(-90, 41)
 
 [connection signal="timeout" from="TileMap/Spawn" to="." method="SpawnHuman"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://div4dag4qrnn4"]
+[gd_scene load_steps=12 format=3 uid="uid://div4dag4qrnn4"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
 [ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_tunxx"]
@@ -52,7 +52,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Farmer" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ftt4"]
+
+[node name="Wizard" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_hw863")
 
@@ -84,5 +86,12 @@ scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
 animation = &"attack"
 frame_progress = 0.326496
+
+[node name="MouseClicker" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
+position = Vector2(0, -11.88)
+scale = Vector2(0.99, 0.99)
+shape = SubResource("CapsuleShape2D_0ftt4")
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]

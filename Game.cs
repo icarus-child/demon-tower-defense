@@ -10,8 +10,9 @@ public partial class Game : Node2D
 	private readonly Dictionary<PackedScene, float> _humans = new ();
 	private readonly Dictionary<PackedScene, float> _demons = new ();
 
-	private Marker2D _portal;
+	private StaticBody2D _portal;
 	public static Marker2D Cursor;
+	private CameraControl _camera;
 
 	private void RegisterHuman(String scene, float spawnChance)
 	{
@@ -25,10 +26,11 @@ public partial class Game : Node2D
 
 	public override void _Ready()
 	{
-		_portal = GetNode<Marker2D>("Target");
-		Cursor = GetNode<Marker2D>("Cursor");
+		_portal = GetNode<StaticBody2D>("TileMap/Portal");
+		Cursor = GetNode<Marker2D>("TileMap/Cursor");
+		_camera = GetNode<CameraControl>("Camera2D");
 
-		RegisterDemon("res://characters/demons/TestDemon.tscn", 0.5f);
+		RegisterDemon("res://characters/demons/Demon.tscn", 0.5f);
 
 		RegisterHuman("res://characters/humans/Farmer.tscn", 0.3f);
 		RegisterHuman("res://characters/humans/SaltyBoi.tscn", 0.25F);
@@ -49,11 +51,11 @@ public partial class Game : Node2D
 		node.GetNode<Marker2D>(_rng.Next(1, node.GetChildCount() + 1).ToString()).AddChild(human);
 	}
 
-	public override void _Input(InputEvent @event)
+	/*public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseButton mouse && mouse.ButtonIndex == MouseButton.Left)
 		{
-			Cursor.Position = mouse.Position;
+			Cursor.Position = mouse.Position * _camera.GetZoom() / 8;
 		}
-	}
+	}*/
 }

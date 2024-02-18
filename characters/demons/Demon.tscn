@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bs3c6vvutmvgw"]
+[gd_scene load_steps=12 format=3 uid="uid://dt5cnusallb2l"]
 
-[ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
-[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_tunxx"]
+[ext_resource type="Script" path="res://Entity.cs" id="1_5ccqh"]
+[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_py47k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yvgg4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
 
@@ -12,19 +14,19 @@ radius = 54.0093
 radius = 13.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12x8n"]
-atlas = ExtResource("2_tunxx")
+atlas = ExtResource("2_py47k")
 region = Rect2(0, 1024, 768, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_165m1"]
-atlas = ExtResource("2_tunxx")
+atlas = ExtResource("2_py47k")
 region = Rect2(2304, 1024, 768, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ognfs"]
-atlas = ExtResource("2_tunxx")
+atlas = ExtResource("2_py47k")
 region = Rect2(768, 1024, 768, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thn3f"]
-atlas = ExtResource("2_tunxx")
+atlas = ExtResource("2_py47k")
 region = Rect2(1536, 1024, 768, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
@@ -52,11 +54,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s43w0"]
-
-[node name="Farmer" type="CharacterBody2D"]
+[node name="Demon" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_hw863")
+script = ExtResource("1_5ccqh")
+EntityTeam = 1
+
+[node name="MouseClicker" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
+position = Vector2(0, -11.88)
+scale = Vector2(0.99, 0.99)
+shape = SubResource("CapsuleShape2D_yvgg4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n4io4")
@@ -85,12 +93,5 @@ position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
 animation = &"walk"
-
-[node name="MouseClicker" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
-position = Vector2(0, -11.88)
-scale = Vector2(0.99, 0.99)
-shape = SubResource("CapsuleShape2D_s43w0")
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]

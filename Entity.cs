@@ -28,20 +28,35 @@ public partial class Entity : CharacterBody2D
 	private NavigationAgent2D navigationAgent;
 	private Area2D aggroRange;
 	private Area2D attackRange;
+	private Area2D _mouseClicker;
 	private readonly List<Node2D> targetOptions = new();
 	private AnimatedSprite2D _sprite;
+	private bool _selected;
 	
     public override void _Ready()
     {
 		navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		aggroRange = GetNode<Area2D>("AggroRange");
 		attackRange = GetNode<Area2D>("AttackRange");
+		_mouseClicker = GetNode<Area2D>("MouseClicker");
 		aggroRange.BodyEntered += body => {
 			targetOptions.Add(body);
 		};
 		aggroRange.BodyExited += body => {
 			targetOptions.Remove(body);
 		};
+		/*_mouseClicker.InputEvent += (viewport, @event, idx) =>
+		{
+			if (!@event.IsPressed()) return;
+
+			if (!_selected) _selected = true;
+			else
+			{
+				Target = Game.Cursor;
+				_selected = false;
+			}
+		};*/
+
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_sprite.Play("walk");
     }
@@ -84,7 +99,9 @@ public partial class Entity : CharacterBody2D
 	}
 	
 	private void CreatePath()
-	{	
+	{
+		if (Target is null && Portal is null) return;
+
 		// Target Reaquisition
 		if (Target is null) {
 			if (targetOptions.Count != 0) Target = GetClosestTargetable();
@@ -114,28 +131,3 @@ public partial class Entity : CharacterBody2D
 		QueueFree();
 	}
 }
-
-	/*public override void _Input(InputEvent @event)
-	{
-
-		if (EntityTeam == Team.Humans) return;
-		if (@event is InputEventMouseButton mouse && mouse.ButtonIndex == MouseButton.Left)
-			if (_sprite.HasPoint(mouse.Position))
-		{
-				GD.Print("aaaaaaaaaa");
-			{
-				_selected = true;
-			else
-			}
-			{
-
-				if (_selected)
-				{
-					GD.Print("pain");
-					_selected = false;
-					Target = Game.Cursor;
-				}
-			}
-		}
-	}*/
-
