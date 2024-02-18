@@ -34,6 +34,7 @@ position = Vector2(0, -6)
 texture = ExtResource("3_axsfi")
 
 [node name="Farmer" parent="." node_paths=PackedStringArray("Portal") instance=ExtResource("5_f0wib")]
+position = Vector2(136, 129)
 Portal = NodePath("../Target")
 
 [node name="Target" type="Marker2D" parent="."]
