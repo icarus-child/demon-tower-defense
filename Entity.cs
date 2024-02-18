@@ -85,7 +85,7 @@ public partial class Entity : CharacterBody2D
     {
 		if (Target is null) {
 			if (_targetOptions.Count != 0) Target = GetClosestTargetable();
-			else Target = Portal;
+			else if (EntityTeam == Team.Humans) Target = Portal;
 		}
 
 	    // Make this not shit later
