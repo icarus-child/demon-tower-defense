@@ -13,15 +13,13 @@ public partial class Game : Node2D
 	private readonly Dictionary<PackedScene, float> _demons = new ();
 	private readonly Random _rng = new ();
 
-	private StaticBody2D _portal;
+	private Portal _portal;
 	private CameraControl _camera;
 	private Timer _spawnTimer;
 	private static Label _soulInfo;
 	private static Label _clock;
 	public static Entity Selected;
 	public static double GameTime = 0;
-
-	public int by10 = 0;
 
 	private void RegisterHuman(String scene, float spawnChance)
 	{
@@ -35,11 +33,11 @@ public partial class Game : Node2D
 
 	public override void _Ready()
 	{
-		_portal = GetNode<StaticBody2D>("TileMap/Portal");
 		_camera = GetNode<CameraControl>("Camera2D");
 		_soulInfo = GetNode<Label>("Camera2D/Control/Souls");
 		_clock = GetNode<Label>("Camera2D/Control/Clock");
 		_spawnTimer = GetNode<Timer>("TileMap/Spawn");
+		_portal = GetNode<Portal>("TileMap/Portal");
 
 		RegisterDemon("res://characters/demons/LilGuy.tscn", 0.3f);
 		RegisterDemon("res://characters/demons/AngelThing.tscn", 0.2f);
@@ -57,7 +55,7 @@ public partial class Game : Node2D
     {
 		GameTime += delta;
 
-		var span = new TimeSpan(0, 0, (int) GameTime); //Or TimeSpan.FromSeconds(seconds); (see Jakob C´s answer)
+		var span = new TimeSpan(0, 0, (int) GameTime);
 		_clock.Text = string.Format("{0}:{1:00}", (int)span.TotalMinutes, span.Seconds);
 
 		// ramp the spawn time, I couldn't figure it out

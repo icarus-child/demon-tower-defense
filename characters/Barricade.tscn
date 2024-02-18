@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp5oum32dsqvu"]
+
+[ext_resource type="Script" path="res://Barrier.cs" id="1_mtqyb"]
+[ext_resource type="Texture2D" uid="uid://b7w0m8s38yxfo" path="res://assets/tiles/barricade.png" id="2_y1wv8"]
+
+[node name="Barricade" type="StaticBody2D"]
+y_sort_enabled = true
+collision_mask = 0
+script = ExtResource("1_mtqyb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6.76013, -190.942)
+scale = Vector2(0.935537, 0.935537)
+texture = ExtResource("2_y1wv8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1795.35, -817.711)
+polygon = PackedVector2Array(-1802.35, 934.711, -2043.35, 807.711, -1790.35, 715.711, -1548.35, 823.711)
