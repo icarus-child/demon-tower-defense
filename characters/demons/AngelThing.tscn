@@ -61,14 +61,15 @@ animations = [{
 }]
 
 [node name="Demon" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_eovuy")
 EntityTeam = 1
-_health = 80.0
-_damage = 40.0
+_health = 40.0
+_damage = 20.0
 _attackCooldown = 1.5
 _wallMultiplier = 1.0
 _enemyMultiplier = 1.0
-speed = 40.0
+speed = 35.0
 
 [node name="MouseClicker" type="Area2D" parent="."]
 
@@ -81,6 +82,7 @@ shape = SubResource("CapsuleShape2D_yvgg4")
 shape = SubResource("CircleShape2D_n4io4")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
 target_desired_distance = 2.0
 debug_enabled = true
 

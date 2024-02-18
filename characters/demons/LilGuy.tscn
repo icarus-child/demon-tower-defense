@@ -61,10 +61,11 @@ animations = [{
 }]
 
 [node name="Demon" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_5ccqh")
 EntityTeam = 1
-_health = 70.0
-_damage = 10.0
+_health = 50.0
+_damage = 15.0
 _attackCooldown = 1.0
 _wallMultiplier = 1.0
 _enemyMultiplier = 1.0
@@ -81,7 +82,9 @@ shape = SubResource("CapsuleShape2D_yvgg4")
 shape = SubResource("CircleShape2D_n4io4")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
 target_desired_distance = 2.0
+radius = 5.0
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]

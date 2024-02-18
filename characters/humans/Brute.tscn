@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cc25y8ghim42m"]
+[gd_scene load_steps=12 format=3 uid="uid://ovtoru4jkog"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_v80lm"]
 [ext_resource type="Texture2D" uid="uid://q3r0bbgqywew" path="res://assets/dudes/human.png" id="2_7wbbb"]
@@ -31,7 +31,7 @@ region = Rect2(1536, 4096, 768, 1024)
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_huo1x")
 }],
 "loop": false,
@@ -47,10 +47,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_1nno8")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_653hl")
 }],
 "loop": true,
@@ -61,15 +61,16 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63hf6"]
 
 [node name="Brute" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_v80lm")
-_health = 30.0
-_damage = 10.0
-_attackCooldown = 1.5
-_wallMultiplier = 1.0
+_health = 85.0
+_damage = 35.0
+_attackCooldown = 2.5
+_wallMultiplier = 2.0
 _enemyMultiplier = 1.0
-speed = 30.0
+speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n4io4")
@@ -100,7 +101,6 @@ position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
 animation = &"walk"
-frame_progress = 0.431366
 
 [node name="MouseClicker" type="Area2D" parent="."]
 position = Vector2(0, 0.57)

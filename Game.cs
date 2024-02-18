@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using DemonTowerDefense;
+using System.Reflection.Metadata;
 
 public partial class Game : Node2D
 {
@@ -16,6 +17,7 @@ public partial class Game : Node2D
 	private CameraControl _camera;
 	private static Label _soulInfo;
 	public static Entity Selected;
+	public static double GameTime = 0;
 
 	private void RegisterHuman(String scene, float spawnChance)
 	{
@@ -31,7 +33,7 @@ public partial class Game : Node2D
 	{
 		_portal = GetNode<StaticBody2D>("TileMap/Portal");
 		_camera = GetNode<CameraControl>("Camera2D");
-		_soulInfo = GetNode<Label>("Souls");
+		_soulInfo = GetNode<Label>("../Control/Souls");
 
 		RegisterDemon("res://characters/demons/LilGuy.tscn", 0.3f);
 		RegisterDemon("res://characters/demons/AngelThing.tscn", 0.2f);
@@ -44,6 +46,11 @@ public partial class Game : Node2D
 		RegisterHuman("res://characters/humans/Brute.tscn", 0.2F);
 		SpawnHuman();
 	}
+
+    public override void _Process(double delta)
+    {
+		GameTime += delta;
+    }
 
 	public static void AddSoul()
 	{

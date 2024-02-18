@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://iidkqo5e1doh"]
+[gd_scene load_steps=12 format=3 uid="uid://d3rspulye78ii"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_iaj3x"]
 [ext_resource type="Texture2D" uid="uid://q3r0bbgqywew" path="res://assets/dudes/human.png" id="2_nbdio"]
@@ -47,10 +47,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_a2830")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_7rc2b")
 }],
 "loop": true,
@@ -61,15 +61,16 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63hf6"]
 
 [node name="Priest" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_iaj3x")
-_health = 30.0
+_health = 25.0
 _damage = 10.0
-_attackCooldown = 1.5
+_attackCooldown = 1.0
 _wallMultiplier = 1.0
 _enemyMultiplier = 1.0
-speed = 30.0
+speed = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n4io4")

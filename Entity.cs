@@ -33,6 +33,8 @@ public partial class Entity : CharacterBody2D, IDamageable
 	private Timer _attackCooldownTimer;
 	private bool _canAttack = false;
 	private bool _animationFinished = false;
+	private ProgressBar _healthBar;
+	private float _maxHealth;
 	
     public override void _Ready()
     {
@@ -43,6 +45,25 @@ public partial class Entity : CharacterBody2D, IDamageable
 			Autostart = true
         };
 		AddChild(_attackCooldownTimer);
+		_healthBar = GD.Load<PackedScene>("res://characters/HeathBar.tscn").Instantiate<ProgressBar>();
+		AddChild(_healthBar);
+		var blueBar = new StyleBoxFlat()
+		{
+			BgColor = new Color(0.557f, 0.745f, 0.839f, 1),
+			CornerRadiusBottomRight = 7,
+			CornerRadiusTopLeft = 7,
+			CornerRadiusTopRight = 7,
+			CornerRadiusBottomLeft = 7
+		};
+		var redBar = new StyleBoxFlat()
+		{
+			BgColor = new Color(0.929f, 0.231f, 0.267f, 1),
+			CornerRadiusBottomRight = 7,
+			CornerRadiusTopLeft = 7,
+			CornerRadiusTopRight = 7,
+			CornerRadiusBottomLeft = 7
+		};
+		_healthBar.AddThemeStyleboxOverride("fill", EntityTeam == Team.Humans ? blueBar : redBar);
 		_navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		_aggroRange = GetNode<Area2D>("AggroRange");
 		_attackRange = GetNode<Area2D>("AttackRange");
@@ -78,6 +99,8 @@ public partial class Entity : CharacterBody2D, IDamageable
 			}
 		};
 		_sprite.Play("idle");
+		_maxHealth = _health;
+
     }
 
     public override void _Input(InputEvent @event)
@@ -128,7 +151,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 				_attackCooldownTimer.Start();
 				_sprite.Play("attack");
 				if (Target is IDamageable weezer) {
-					weezer.TakeDamage(_damage * ((Target is Entity) ? _enemyMultiplier : _wallMultiplier));
+					weezer.TakeDamage(_damage * ((Target is Entity) ? _enemyMultiplier : _wallMultiplier), this);
 				}
 			}
 		}
@@ -173,13 +196,14 @@ public partial class Entity : CharacterBody2D, IDamageable
 		});
 	}
 
-	void IDamageable.TakeDamage(float damage) {
+	void IDamageable.TakeDamage(float damage, Node2D attacker) {
 		// never go below 0 hp
 		_health -= Mathf.Min(damage, _health);
+		_healthBar.Value = (_health / _maxHealth) * 100;
 		if (_health == 0) Die();
 		// calculate targetting attacker
 		if ((Target == Portal || Target is Marker2D) && EntityTeam is Team.Humans) {
-			
+			Target = attacker;
 		}
 	}
 	

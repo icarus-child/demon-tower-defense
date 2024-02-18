@@ -61,11 +61,12 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ftt4"]
 
 [node name="Wizard" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_hw863")
 _health = 20.0
-_damage = 30.0
+_damage = 25.0
 _attackCooldown = 2.0
 _wallMultiplier = 1.0
 _enemyMultiplier = 1.0
@@ -77,6 +78,7 @@ visibility_layer = 0
 shape = SubResource("CircleShape2D_n4io4")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
 target_desired_distance = 2.0
 debug_enabled = true
 

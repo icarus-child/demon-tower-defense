@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsi41d7b4homb"]
+[gd_scene load_steps=12 format=3 uid="uid://3am0sxfvtigb"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_7qndg"]
 [ext_resource type="Texture2D" uid="uid://c34ow8b5v7r0m" path="res://assets/dudes/big.png" id="2_aque8"]
@@ -33,7 +33,7 @@ region = Rect2(1536, 0, 768, 1024)
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_gltve")
 }],
 "loop": false,
@@ -49,26 +49,27 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.5,
 "texture": SubResource("AtlasTexture_g7f7k")
 }, {
-"duration": 1.0,
+"duration": 2.5,
 "texture": SubResource("AtlasTexture_vuyur")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 7.0
+"speed": 5.0
 }]
 
 [node name="Demon" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_7qndg")
 EntityTeam = 1
-_health = 70.0
-_damage = 10.0
-_attackCooldown = 1.0
+_health = 180.0
+_damage = 40.0
+_attackCooldown = 2.0
 _wallMultiplier = 1.0
 _enemyMultiplier = 1.0
-speed = 55.0
+speed = 15.0
 
 [node name="MouseClicker" type="Area2D" parent="."]
 position = Vector2(0, 1.395)
@@ -107,6 +108,6 @@ debug_color = Color(0.945098, 0.207843, 0.27451, 0.419608)
 position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
-animation = &"attack"
+animation = &"walk"
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]

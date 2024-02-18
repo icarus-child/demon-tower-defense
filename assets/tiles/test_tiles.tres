@@ -1,20 +1,6 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bb5y4dyturcv"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bb5y4dyturcv"]
 
 [ext_resource type="Texture2D" uid="uid://dshi2v71tpxea" path="res://assets/isometric tileset/spritesheet.png" id="1_pp7dc"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_h8yyj"]
-vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-agent_radius = 0.0
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_s4o0y"]
-vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-16, 0, 0, 8, 16, 0, 0, -8)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ec3cv"]
 texture = ExtResource("1_pp7dc")
@@ -23,7 +9,6 @@ texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
-3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_h8yyj")
 4:0/0 = 0
 5:0/0 = 0
 6:0/0 = 0
@@ -81,7 +66,6 @@ texture_region_size = Vector2i(32, 32)
 3:5/0 = 0
 4:5/0 = 0
 5:5/0 = 0
-5:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_s4o0y")
 6:5/0 = 0
 7:5/0 = 0
 8:5/0 = 0
@@ -235,6 +219,7 @@ texture_region_size = Vector2i(32, 32)
 8:21/0 = 0
 9:21/0 = 0
 10:21/0 = 0
+9:6/0 = 0
 
 [resource]
 tile_shape = 1

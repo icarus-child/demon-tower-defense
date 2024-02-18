@@ -5,7 +5,7 @@ public partial class Portal : StaticBody2D, IDamageable
 	private float _health;
 	private bool _lost;
 
-	void IDamageable.TakeDamage(float damage) {
+	void IDamageable.TakeDamage(float damage, Node2D attacker) {
 		_health -= Mathf.Min(damage, _health);
 		if (_health == 0) _lost = true;
 	}
