@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://du0lg7q2luvkf"]
+[gd_scene load_steps=11 format=3 uid="uid://bminocv4kqh0x"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_ppq50"]
 [ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_wa5oa"]
@@ -9,15 +9,15 @@
 radius = 54.0093
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
-radius = 13.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4hw0y"]
-atlas = ExtResource("2_wa5oa")
-region = Rect2(0, 2048, 768, 1024)
+radius = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ttoo5"]
 atlas = ExtResource("2_wa5oa")
 region = Rect2(2304, 2048, 768, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5np6h"]
+atlas = ExtResource("2_wa5oa")
+region = Rect2(0, 2048, 768, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p4421"]
 atlas = ExtResource("2_wa5oa")
@@ -31,13 +31,18 @@ region = Rect2(1536, 2048, 768, 1024)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4hw0y")
-}, {
-"duration": 2.0,
 "texture": SubResource("AtlasTexture_ttoo5")
 }],
 "loop": true,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5np6h")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -83,6 +88,5 @@ position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
 animation = &"attack"
-frame_progress = 0.81155
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]

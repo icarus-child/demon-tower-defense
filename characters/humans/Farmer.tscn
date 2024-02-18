@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://lnc715cv4xxu"]
+[gd_scene load_steps=11 format=3 uid="uid://div4dag4qrnn4"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
 [ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_tunxx"]
@@ -9,15 +9,15 @@
 radius = 54.0093
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
-radius = 13.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12x8n"]
-atlas = ExtResource("2_tunxx")
-region = Rect2(0, 1024, 768, 1024)
+radius = 12.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_165m1"]
 atlas = ExtResource("2_tunxx")
 region = Rect2(2304, 1024, 768, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mimm"]
+atlas = ExtResource("2_tunxx")
+region = Rect2(0, 1024, 768, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ognfs"]
 atlas = ExtResource("2_tunxx")
@@ -31,13 +31,18 @@ region = Rect2(1536, 1024, 768, 1024)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_12x8n")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_165m1")
 }],
 "loop": true,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mimm")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -82,6 +87,6 @@ debug_color = Color(0.945098, 0.207843, 0.27451, 0.419608)
 position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
-animation = &"walk"
+animation = &"attack"
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]
