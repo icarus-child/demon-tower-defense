@@ -78,7 +78,6 @@ public partial class Entity : CharacterBody2D
 		    Target = Cursor;
 		    _selected = false;
 	    }
-
     }
 
     public override void _Process(double delta)

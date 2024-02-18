@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://du0lg7q2luvkf"]
+[gd_scene load_steps=12 format=3 uid="uid://dt5cnusallb2l"]
 
-[ext_resource type="Script" path="res://Entity.cs" id="1_ppq50"]
-[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_wa5oa"]
+[ext_resource type="Script" path="res://Entity.cs" id="1_5ccqh"]
+[ext_resource type="Texture2D" uid="uid://elj4dao3qmg7" path="res://assets/dudes/litteguy.png" id="2_dglxr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yvgg4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
 
@@ -9,37 +11,37 @@
 radius = 54.0093
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
-radius = 18.0
+radius = 13.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttoo5"]
-atlas = ExtResource("2_wa5oa")
-region = Rect2(2304, 2048, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl0gv"]
+atlas = ExtResource("2_dglxr")
+region = Rect2(2304, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5np6h"]
-atlas = ExtResource("2_wa5oa")
-region = Rect2(0, 2048, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ckjq"]
+atlas = ExtResource("2_dglxr")
+region = Rect2(1536, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p4421"]
-atlas = ExtResource("2_wa5oa")
-region = Rect2(768, 2048, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq84s"]
+atlas = ExtResource("2_dglxr")
+region = Rect2(0, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ut75l"]
-atlas = ExtResource("2_wa5oa")
-region = Rect2(1536, 2048, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_461v1"]
+atlas = ExtResource("2_dglxr")
+region = Rect2(768, 0, 768, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_ttoo5")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl0gv")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5np6h")
+"texture": SubResource("AtlasTexture_1ckjq")
 }],
 "loop": true,
 "name": &"idle",
@@ -47,22 +49,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p4421")
+"texture": SubResource("AtlasTexture_lq84s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ut75l")
+"texture": SubResource("AtlasTexture_461v1")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 7.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_popvf"]
+[node name="Demon" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_5ccqh")
+EntityTeam = 1
+speed = 40.0
 
-[node name="SaltyBoi" type="CharacterBody2D"]
-collision_layer = 4
-script = ExtResource("1_ppq50")
-speed = 15.0
+[node name="MouseClicker" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
+position = Vector2(0, -11.88)
+scale = Vector2(0.99, 0.99)
+shape = SubResource("CapsuleShape2D_yvgg4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n4io4")
@@ -90,13 +99,7 @@ debug_color = Color(0.945098, 0.207843, 0.27451, 0.419608)
 position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
-animation = &"attack"
-
-[node name="MouseClicker" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
-position = Vector2(0, -11.88)
-scale = Vector2(0.99, 0.99)
-shape = SubResource("CapsuleShape2D_popvf")
+animation = &"walk"
+frame_progress = 0.212228
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]
