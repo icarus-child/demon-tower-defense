@@ -27,7 +27,7 @@ public partial class Enemy : CharacterBody2D
 	private int _targetingPriority = -1;
 	private NavigationAgent2D navigationAgent;
 	private Area2D aggroRange;
-	private List<Node2D> targetBacklog = new();
+	private readonly List<Node2D> targetBacklog = new();
 	
     public override void _Ready()
     {
