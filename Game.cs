@@ -25,8 +25,8 @@ public partial class Game : Node2D
 
 	public override void _Ready()
 	{
-		_portal = GetNode<Marker2D>("TileMap/Target");
-		Cursor = GetNode<Marker2D>("TileMap/Cursor");
+		_portal = GetNode<Marker2D>("Target");
+		Cursor = GetNode<Marker2D>("Cursor");
 
 		RegisterDemon("res://characters/demons/TestDemon.tscn", 0.5f);
 
