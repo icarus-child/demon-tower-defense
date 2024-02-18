@@ -14,7 +14,7 @@ public partial class Game : Node2D
 	private readonly Random _rng = new ();
 
 	private Portal _portal;
-	private CameraControl _camera;
+	public static CameraControl Camera;
 	private Timer _spawnTimer;
 	private AudioStreamPlayer2D _audioPlayer;
 	private static Label _soulInfo;
@@ -35,7 +35,7 @@ public partial class Game : Node2D
 
 	public override void _Ready()
 	{
-		_camera = GetNode<CameraControl>("Camera2D");
+		Camera = GetNode<CameraControl>("Camera2D");
 		_soulInfo = GetNode<Label>("UI/Souls");
 		_clock = GetNode<Label>("UI/Clock");
 		_spawnTimer = GetNode<Timer>("TileMap/Spawn");

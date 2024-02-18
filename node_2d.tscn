@@ -11,12 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c2xm8gbhlxv2v" path="res://characters/demons/LilGuy.tscn" id="7_esb70"]
 [ext_resource type="Texture2D" uid="uid://bjatewb1wnf05" path="res://assets/tiles/hell_floor.png" id="7_pp34u"]
 [ext_resource type="PackedScene" uid="uid://ccbwvmpmmeycy" path="res://characters/demons/AngelThing.tscn" id="9_54up0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olmx7"]
-bg_color = Color(0.752941, 0.752941, 0.752941, 0.266667)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vw0s"]
-bg_color = Color(0.670588, 0.117647, 0.121569, 1)
+[ext_resource type="Texture2D" uid="uid://xn0bluc6hyjs" path="res://assets/UI assets/gameover.png" id="12_h1fvd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tmicm"]
 vertices = PackedVector2Array(384, 0, 0, 192, -384, 0, 0, -192)
@@ -56,6 +51,12 @@ sources/2 = SubResource("TileSetAtlasSource_qkl78")
 radius = 3.62694
 height = 18.6529
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olmx7"]
+bg_color = Color(0.752941, 0.752941, 0.752941, 0.266667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vw0s"]
+bg_color = Color(0.670588, 0.117647, 0.121569, 1)
+
 [node name="Node" type="Node"]
 
 [node name="Game" type="Node2D" parent="."]
@@ -63,83 +64,6 @@ script = ExtResource("1_3ijct")
 
 [node name="Camera2D" type="Camera2D" parent="Game"]
 script = ExtResource("1_gmnbi")
-
-[node name="Control" type="Control" parent="Game/Camera2D"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 584.0
-offset_top = 149.0
-offset_right = 584.0
-offset_bottom = 149.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Buy" type="Button" parent="Game/Camera2D/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -180.0
-offset_top = 71.0
-offset_right = -46.0
-offset_bottom = 102.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Summon Random Demon - 7 Souls"
-
-[node name="Souls" type="Label" parent="Game/Camera2D/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -116.0
-offset_top = 31.0
-offset_right = -48.0
-offset_bottom = 54.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Souls: 14"
-
-[node name="Clock" type="Label" parent="Game/Camera2D/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -131.0
-offset_top = -429.0
-offset_right = -55.0
-offset_bottom = -387.0
-grow_horizontal = 0
-pivot_offset = Vector2(41, 12)
-size_flags_horizontal = 8
-theme_override_font_sizes/font_size = 30
-text = "00:00"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="PortalHealth" type="ProgressBar" parent="Game/Camera2D/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -906.0
-offset_top = -422.0
-offset_right = -261.0
-offset_bottom = -395.0
-grow_horizontal = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_olmx7")
-theme_override_styles/fill = SubResource("StyleBoxFlat_7vw0s")
-max_value = 500.0
-value = 500.0
-show_percentage = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Game"]
 stream = ExtResource("3_e07ns")
@@ -257,6 +181,21 @@ polygon = PackedVector2Array(0, 504.473, 259.88, 489.186, 504.473, 443.325, 749.
 
 [node name="UI" type="CanvasLayer" parent="Game"]
 
+[node name="PortalHealth" type="ProgressBar" parent="Game/UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -322.0
+offset_top = 42.0
+offset_right = 323.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_olmx7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7vw0s")
+max_value = 500.0
+value = 500.0
+show_percentage = false
+
 [node name="Buy" type="Button" parent="Game/UI"]
 anchors_preset = 3
 anchor_left = 1.0
@@ -269,7 +208,7 @@ offset_right = -36.0
 offset_bottom = -26.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Buy Demon 7 $$"
+text = "Summon Random Demon - 7 Souls"
 
 [node name="Souls" type="Label" parent="Game/UI"]
 anchors_preset = 3
@@ -300,6 +239,15 @@ theme_override_font_sizes/font_size = 30
 text = "00:00"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="GameOver" type="TextureRect" parent="Game/UI"]
+visible = false
+offset_left = -1.14441e-05
+offset_top = 2.0
+offset_right = 2048.0
+offset_bottom = 1026.0
+scale = Vector2(0.56244, 0.631704)
+texture = ExtResource("12_h1fvd")
 
 [connection signal="finished" from="Game/AudioStreamPlayer2D" to="Game" method="RestartSong"]
 [connection signal="timeout" from="Game/TileMap/Spawn" to="Game" method="SpawnHuman"]

@@ -8,7 +8,7 @@ public partial class Portal : StaticBody2D, IDamageable
 
     public override void _Ready()
     {
-		_healthBar = GetNode<ProgressBar>("/root/Node/Game/Camera2D/Control/PortalHealth");
+		_healthBar = GetNode<ProgressBar>("/root/Node/Game/UI/PortalHealth");
     }
 
 	void IDamageable.TakeDamage(float damage, Node2D attacker) {
@@ -19,10 +19,15 @@ public partial class Portal : StaticBody2D, IDamageable
 
 	public override void _Process(double delta)
 	{
-		//if (!_lost) return;
+		if (!_lost) return;
 
-		//var tween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Elastic);
-		//tween.TweenProperty(GetParent(), "modulate", new Color(1, 1, 1, 0), 1.0f);
+		Game.Camera.SetProcessInput(false);
+		foreach (var child in GetChildren())
+		{
+			child.SetProcess(false);
+			child.SetProcessInput(false);
+		}
 
+		GetNode<TextureRect>("/root/Node/Game/UI/GameOver").Show();
 	}
 }

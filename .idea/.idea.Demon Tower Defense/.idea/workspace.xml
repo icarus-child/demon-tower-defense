@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e8ed2dae-2b83-44ad-a4cd-8008574c23a5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Demon Tower Defense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Demon Tower Defense/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CameraControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CameraControl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Portal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Portal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/UI assets/fail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/UI assets/fail.png.import" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/node_2d.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/node_2d.tscn" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
