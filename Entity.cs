@@ -96,3 +96,38 @@ public partial class Entity : CharacterBody2D
 		QueueFree();
 	}
 }
+    public override void _Process(double delta)
+    {
+	    // Make sprite face the target
+	    Sprite.FlipV = Target.Position.X > Position.X;
+    }
+	/*public override void _Input(InputEvent @event)
+	{
+
+		if (EntityTeam == Team.Humans) return;
+		if (@event is InputEventMouseButton mouse && mouse.ButtonIndex == MouseButton.Left)
+			if (_sprite.HasPoint(mouse.Position))
+		{
+				GD.Print("aaaaaaaaaa");
+			{
+				_selected = true;
+			else
+			}
+			{
+
+				if (_selected)
+				{
+					GD.Print("pain");
+					_selected = false;
+					Target = Game.Cursor;
+				}
+			}
+		}
+	}*/
+	private void Die()
+	{
+		if (EntityTeam == Team.Humans) Game.Souls++;
+		QueueFree();
+	}
+		Sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		Sprite.Play("walk");

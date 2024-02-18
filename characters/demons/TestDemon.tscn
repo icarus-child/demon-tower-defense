@@ -1,27 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq5ipj71mxvu3"]
+[gd_scene load_steps=10 format=3 uid="uid://b5h1d6jaxhi1m"]
 
-[ext_resource type="Script" path="res://Entity.cs" id="1_kwd8l"]
-[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_xih6v"]
+[ext_resource type="Script" path="res://Entity.cs" id="1_xim5g"]
+[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_3tuot"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp5vp"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5tn3x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12x8n"]
-atlas = ExtResource("2_xih6v")
+atlas = ExtResource("2_3tuot")
 region = Rect2(0, 1024, 768, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_165m1"]
-atlas = ExtResource("2_xih6v")
+atlas = ExtResource("2_3tuot")
 region = Rect2(2304, 1024, 768, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ognfs"]
-atlas = ExtResource("2_xih6v")
+atlas = ExtResource("2_3tuot")
 region = Rect2(768, 1024, 768, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thn3f"]
-atlas = ExtResource("2_xih6v")
+atlas = ExtResource("2_3tuot")
 region = Rect2(1536, 1024, 768, 1024)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_th1o8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_p66it"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -46,20 +46,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gxixc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_21ukl"]
 radius = 54.0093
 
 [node name="TestHuman" type="CharacterBody2D"]
-script = ExtResource("1_kwd8l")
+script = ExtResource("1_xim5g")
+EntityTeam = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_fp5vp")
+shape = SubResource("CapsuleShape2D_5tn3x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.04, 0.04)
-sprite_frames = SubResource("SpriteFrames_th1o8")
+sprite_frames = SubResource("SpriteFrames_p66it")
 animation = &"walk"
-frame_progress = 0.589018
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 max_neighbors = 20
@@ -72,6 +72,4 @@ autostart = true
 [node name="AggroRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
-shape = SubResource("CircleShape2D_gxixc")
-
-[connection signal="timeout" from="Timer" to="." method="CreatePath"]
+shape = SubResource("CircleShape2D_21ukl")
