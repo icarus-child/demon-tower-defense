@@ -58,6 +58,7 @@ animations = [{
 collision_layer = 4
 script = ExtResource("1_5ccqh")
 EntityTeam = 1
+speed = 40.0
 
 [node name="MouseClicker" type="Area2D" parent="."]
 

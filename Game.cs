@@ -39,7 +39,6 @@ public partial class Game : Node2D
 	{
 		Entity demon = _demons.RandomElementByWeight(e => e.Value).Key.Instantiate<Entity>();
 		GetNode("TileMap").AddChild(demon.Cursor);
-
 		_portal.AddChild(demon);
 	}
 

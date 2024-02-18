@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bminocv4kqh0x"]
+[gd_scene load_steps=12 format=3 uid="uid://du0lg7q2luvkf"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_ppq50"]
 [ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_wa5oa"]
@@ -62,6 +62,7 @@ animations = [{
 [node name="SaltyBoi" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_ppq50")
+speed = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n4io4")

@@ -8,8 +8,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Demon Tower Defense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Demon Tower Defense/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_2d.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/node_2d.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/characters/demons/Demon.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/characters/demons/Demon.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/characters/humans/Farmer.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/characters/humans/Farmer.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/characters/humans/SaltyBoi.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/characters/humans/SaltyBoi.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/characters/humans/Wizard.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/characters/humans/Wizard.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_barricade.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/test_barricade.tscn" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +97,7 @@
       <workItem from="1708158569111" duration="7032000" />
       <workItem from="1708219385769" duration="9035000" />
       <workItem from="1708228428093" duration="10531000" />
-      <workItem from="1708238967910" duration="390000" />
+      <workItem from="1708238967910" duration="1664000" />
     </task>
     <servers />
   </component>
