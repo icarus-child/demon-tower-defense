@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxdurw27p7yyq"]
+[gd_scene load_steps=13 format=3 uid="uid://bxdurw27p7yyq"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_3ijct"]
 [ext_resource type="Script" path="res://CameraControl.cs" id="1_gmnbi"]
+[ext_resource type="AudioStream" uid="uid://di6gw6khrlwu2" path="res://assets/audio/Toothless Dance Medieval Version ｜ Driftveil City Bardcore.mp3" id="3_e07ns"]
 [ext_resource type="Texture2D" uid="uid://di4op6pj6ffpe" path="res://assets/tiles/ground_tiles.png" id="3_pnjff"]
 [ext_resource type="Texture2D" uid="uid://dvh2qc02a1rw5" path="res://assets/tiles/portal.png" id="4_78goc"]
 [ext_resource type="PackedScene" uid="uid://c2xm8gbhlxv2v" path="res://characters/demons/LilGuy.tscn" id="7_esb70"]
@@ -44,66 +45,9 @@ script = ExtResource("1_3ijct")
 [node name="Camera2D" type="Camera2D" parent="Game"]
 script = ExtResource("1_gmnbi")
 
-[node name="Control" type="Control" parent="Game/Camera2D"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 584.0
-offset_top = 149.0
-offset_right = 584.0
-offset_bottom = 149.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Buy" type="Button" parent="Game/Camera2D/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -180.0
-offset_top = 71.0
-offset_right = -46.0
-offset_bottom = 102.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Buy Demon 7 $$"
-
-[node name="Souls" type="Label" parent="Game/Camera2D/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -116.0
-offset_top = 31.0
-offset_right = -48.0
-offset_bottom = 54.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Souls: 14"
-
-[node name="Clock" type="Label" parent="Game/Camera2D/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -131.0
-offset_top = -429.0
-offset_right = -55.0
-offset_bottom = -387.0
-grow_horizontal = 0
-pivot_offset = Vector2(41, 12)
-size_flags_horizontal = 8
-theme_override_font_sizes/font_size = 30
-text = "00:00"
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Game"]
+stream = ExtResource("3_e07ns")
+autoplay = true
 
 [node name="TileMap" type="TileMap" parent="Game"]
 y_sort_enabled = true
@@ -172,6 +116,7 @@ Portal = NodePath("..")
 
 [node name="Demon3" parent="Game/TileMap/Portal" node_paths=PackedStringArray("Portal") instance=ExtResource("9_54up0")]
 position = Vector2(34, -1)
+_ranged = false
 Portal = NodePath("..")
 
 [node name="HealZone" type="Area2D" parent="Game/TileMap/Portal"]
@@ -185,5 +130,52 @@ texture = ExtResource("7_pp34u")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/TileMap/Portal/HealZone"]
 polygon = PackedVector2Array(0, 504.473, 259.88, 489.186, 504.473, 443.325, 749.066, 351.602, 901.936, 244.593, 993.659, 122.296, 1024.23, -30.5741, 947.798, -198.732, 825.501, -305.741, 642.056, -397.464, 382.176, -473.899, 15.2871, -519.76, -366.889, -473.899, -565.621, -428.038, -764.353, -336.315, -947.798, -198.732, -1024.23, -30.5741, -963.085, 183.445, -764.353, 336.315, -504.473, 443.325, -259.88, 489.186)
 
-[connection signal="button_down" from="Game/Camera2D/Control/Buy" to="Game" method="SpawnDemon"]
+[node name="UI" type="CanvasLayer" parent="Game"]
+
+[node name="Buy" type="Button" parent="Game/UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -57.0
+offset_right = -36.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Buy Demon 7 $$"
+
+[node name="Souls" type="Label" parent="Game/UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -97.0
+offset_right = -38.0
+offset_bottom = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Souls: 14"
+
+[node name="Clock" type="Label" parent="Game/UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -121.0
+offset_top = 29.0
+offset_right = -45.0
+offset_bottom = 71.0
+grow_horizontal = 0
+pivot_offset = Vector2(41, 12)
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
+text = "00:00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="finished" from="Game/AudioStreamPlayer2D" to="Game" method="RestartSong"]
 [connection signal="timeout" from="Game/TileMap/Spawn" to="Game" method="SpawnHuman"]
+[connection signal="button_down" from="Game/UI/Buy" to="Game" method="SpawnDemon"]

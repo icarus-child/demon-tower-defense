@@ -8,6 +8,11 @@ public partial class CameraControl : Camera2D
 
 	private Vector2 _initialDragPos;
 
+	public override void _Ready()
+	{
+		Zoom = new Vector2(2.5F, 2.5F);
+	}
+
 	/*public override void _Process(double delta)
 	{
 		// Camera Slide

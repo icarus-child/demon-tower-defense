@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://di6gw6khrlwu2"
+path="res://.godot/imported/Toothless Dance Medieval Version ｜ Driftveil City Bardcore.mp3-118bd3e372a1723122bcd3cea39fc8e3.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Toothless Dance Medieval Version ｜ Driftveil City Bardcore.mp3"
+dest_files=["res://.godot/imported/Toothless Dance Medieval Version ｜ Driftveil City Bardcore.mp3-118bd3e372a1723122bcd3cea39fc8e3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

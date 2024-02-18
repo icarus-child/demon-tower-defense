@@ -3,7 +3,7 @@ using Godot;
 public partial class Portal : StaticBody2D, IDamageable
 {
 	private float _health;
-	private bool _lost;
+	private bool _lost = true;
 
 	void IDamageable.TakeDamage(float damage, Node2D attacker) {
 		_health -= Mathf.Min(damage, _health);
@@ -12,9 +12,10 @@ public partial class Portal : StaticBody2D, IDamageable
 
 	public override void _Process(double delta)
 	{
-		if (!_lost) return;
+		//if (!_lost) return;
 
-		var tween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Elastic);
-		tween.TweenProperty(GetParent(), "modulate", new Color(1, 1, 1, 0), 1.0f);
+		//var tween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Elastic);
+		//tween.TweenProperty(GetParent(), "modulate", new Color(1, 1, 1, 0), 1.0f);
+
 	}
 }
