@@ -20,10 +20,10 @@ public partial class Portal : StaticBody2D, IDamageable
 
 	public override void _Process(double delta)
 	{
-		//if (!_lost) return;
+		if (!_lost) return;
 
-		//var tween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Elastic);
-		//tween.TweenProperty(GetParent(), "modulate", new Color(1, 1, 1, 0), 1.0f);
+		var tween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Elastic);
+		tween.TweenProperty(GetParent(), "modulate", new Color(1, 1, 1, 0), 1.0f);
 
 	}
 }
