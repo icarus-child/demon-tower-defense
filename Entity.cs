@@ -31,6 +31,7 @@ public partial class Entity : CharacterBody2D
 	private AnimatedSprite2D _sprite;
 	private Timer _attackCooldownTimer;
 	private bool _canAttack = false;
+	private bool _animationFinished = false;
 	
     public override void _Ready()
     {
@@ -52,6 +53,9 @@ public partial class Entity : CharacterBody2D
 		};
 		_attackCooldownTimer.Timeout += () => {
 			_canAttack = true;
+		};
+		_sprite.AnimationFinished += () => {
+			_animationFinished = true;
 		};
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_sprite.Play("idle");
@@ -89,7 +93,11 @@ public partial class Entity : CharacterBody2D
 			// Attack
 			if (_canAttack) {
 				GD.Print("Attack");
-				_sprite.Play("attack");
+				_canAttack = false;
+				_attackCooldownTimer.Start();
+			} else {
+				if (_animationFinished)
+				_sprite.Play("idle");
 			}
 		}
 	}
