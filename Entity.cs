@@ -67,6 +67,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 			if (!@event.IsActionPressed("select")) return;
 			if (EntityTeam == Team.Humans)
 			{
+				GD.Print("Hit");
 				Game.Selected.Target = this;
 				Game.Selected._selected = false;
 				return;
@@ -93,6 +94,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 
     public override void _Process(double delta)
     {
+		if (!IsInstanceValid(Target)) Target = null;
 		if (Target is null) {
 			if (_targetOptions.Count != 0) Target = GetClosestTargetable();
 			else if (EntityTeam == Team.Humans) Target = Portal;
@@ -170,7 +172,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 		});
 	}
 
-	void IDamageable.TakeDamage(int damage) {
+	void IDamageable.TakeDamage(float damage) {
 		// never go below 0 hp
 		_health -= Mathf.Min(damage, _health);
 		if (_health == 0) Die();

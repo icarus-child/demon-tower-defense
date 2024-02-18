@@ -36,7 +36,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cl0gv")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -63,7 +63,12 @@ animations = [{
 [node name="Demon" type="CharacterBody2D"]
 script = ExtResource("1_5ccqh")
 EntityTeam = 1
-speed = 40.0
+_health = 70.0
+_damage = 10.0
+_attackCooldown = 1.0
+_wallMultiplier = 1.0
+_enemyMultiplier = 1.0
+speed = 55.0
 
 [node name="MouseClicker" type="Area2D" parent="."]
 
@@ -100,7 +105,6 @@ debug_color = Color(0.945098, 0.207843, 0.27451, 0.419608)
 position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
-animation = &"walk"
-frame_progress = 0.212228
+animation = &"attack"
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]

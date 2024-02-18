@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brbftphc7k0tr"]
+[gd_scene load_steps=12 format=3 uid="uid://ccbwvmpmmeycy"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_eovuy"]
 [ext_resource type="Texture2D" uid="uid://d2s2a68gmbcvk" path="res://assets/dudes/angel.png" id="2_nwplv"]
@@ -33,10 +33,10 @@ region = Rect2(1536, 0, 768, 1024)
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_y7jra")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -63,6 +63,11 @@ animations = [{
 [node name="Demon" type="CharacterBody2D"]
 script = ExtResource("1_eovuy")
 EntityTeam = 1
+_health = 150.0
+_damage = 40.0
+_attackCooldown = 1.5
+_wallMultiplier = 1.0
+_enemyMultiplier = 1.0
 speed = 40.0
 
 [node name="MouseClicker" type="Area2D" parent="."]
