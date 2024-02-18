@@ -1,12 +1,10 @@
 using Godot;
 
-public partial class Barrier : Sprite2D
+public partial class Barrier : Node2D
 {
 
 	public int Health { get => _health; }
 	[Export] private int _health = 100;
-	public int TargetingPriority { get => _targetingPriority; }
-	private int _targetingPriority = -1;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
