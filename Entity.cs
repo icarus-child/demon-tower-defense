@@ -64,8 +64,19 @@ public partial class Entity : CharacterBody2D
 		};
 		_mouseClicker.InputEvent += (viewport, @event, idx) =>
 		{
-			if (EntityTeam == Team.Humans || !@event.IsActionPressed("select")) return;
-			if (!_selected) _selected = true;
+			if (!@event.IsActionPressed("select")) return;
+			if (EntityTeam == Team.Humans)
+			{
+				Game.Selected.Target = this;
+				Game.Selected._selected = false;
+				return;
+			}
+
+			if (!_selected)
+			{
+				Game.Selected = this;
+				_selected = true;
+			}
 		};
 		_sprite.Play("idle");
     }

@@ -12,6 +12,7 @@ public partial class Game : Node2D
 
 	private StaticBody2D _portal;
 	private CameraControl _camera;
+	public static Entity Selected;
 
 	private void RegisterHuman(String scene, float spawnChance)
 	{

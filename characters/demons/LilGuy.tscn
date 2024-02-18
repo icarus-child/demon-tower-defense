@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2xm8gbhlxv2v"]
+[gd_scene load_steps=12 format=3 uid="uid://dt5cnusallb2l"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_5ccqh"]
 [ext_resource type="Texture2D" uid="uid://elj4dao3qmg7" path="res://assets/dudes/litteguy.png" id="2_dglxr"]
@@ -61,6 +61,7 @@ animations = [{
 }]
 
 [node name="Demon" type="CharacterBody2D"]
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_5ccqh")
 EntityTeam = 1
