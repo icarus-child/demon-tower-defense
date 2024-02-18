@@ -1,19 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://7772h8gllaen"]
+[gd_scene load_steps=6 format=3 uid="uid://7772h8gllaen"]
 
 [ext_resource type="TileSet" uid="uid://bb5y4dyturcv" path="res://assets/tiles/test_tiles.tres" id="1_mm01p"]
 [ext_resource type="Script" path="res://CameraControl.cs" id="1_vo5ee"]
-[ext_resource type="Texture2D" uid="uid://cfa8fbii25dj7" path="res://icon.svg" id="2_05yvk"]
 [ext_resource type="Texture2D" uid="uid://b03c63ndvsdqc" path="res://assets/isometric tileset/separated images/tile_060.png" id="3_axsfi"]
 [ext_resource type="Script" path="res://Barrier.cs" id="4_toigs"]
-[ext_resource type="Script" path="res://Entity.cs" id="5_2pumv"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_r22i7"]
-radius = 54.0093
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
-radius = 22.0907
+[ext_resource type="PackedScene" uid="uid://div4dag4qrnn4" path="res://characters/humans/Famer.tscn" id="5_f0wib"]
 
 [node name="TestBarricade" type="Node2D"]
 
@@ -42,38 +33,8 @@ polygon = PackedVector2Array(0, 14, 15, 6, 0, -1, -14, 6)
 position = Vector2(0, -6)
 texture = ExtResource("3_axsfi")
 
-[node name="Unit" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Portal")]
-position = Vector2(-191, 179)
-collision_layer = 4
-script = ExtResource("5_2pumv")
+[node name="Farmer" parent="." node_paths=PackedStringArray("Portal") instance=ExtResource("5_f0wib")]
 Portal = NodePath("../Target")
-
-[node name="Sprite2D" type="Sprite2D" parent="Unit"]
-scale = Vector2(0.165813, 0.165813)
-texture = ExtResource("2_05yvk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Unit"]
-shape = SubResource("CircleShape2D_n4io4")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Unit"]
-target_desired_distance = 2.0
-debug_enabled = true
-
-[node name="Timer" type="Timer" parent="Unit"]
-wait_time = 0.1
-autostart = true
-
-[node name="AggroRange" type="Area2D" parent="Unit"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Unit/AggroRange"]
-shape = SubResource("CircleShape2D_r22i7")
-
-[node name="AttackRange" type="Area2D" parent="Unit"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Unit/AttackRange"]
-shape = SubResource("CircleShape2D_6ds64")
 
 [node name="Target" type="Marker2D" parent="."]
 position = Vector2(-1, -4)
-
-[connection signal="timeout" from="Unit/Timer" to="Unit" method="CreatePath"]

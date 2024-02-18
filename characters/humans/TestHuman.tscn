@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq5ipj71mxvu3"]
+[gd_scene load_steps=11 format=3 uid="uid://duc8qnq366wgi"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_kwd8l"]
 [ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_xih6v"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp5vp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12x8n"]
 atlas = ExtResource("2_xih6v")
@@ -46,14 +44,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gxixc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7h8nv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3o872"]
 radius = 54.0093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_30n5e"]
+radius = 22.0907
 
 [node name="TestHuman" type="CharacterBody2D"]
 script = ExtResource("1_kwd8l")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_fp5vp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.04, 0.04)
@@ -61,8 +61,11 @@ sprite_frames = SubResource("SpriteFrames_th1o8")
 animation = &"walk"
 frame_progress = 0.589018
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7h8nv")
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-max_neighbors = 20
+target_desired_distance = 2.0
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -72,6 +75,9 @@ autostart = true
 [node name="AggroRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
-shape = SubResource("CircleShape2D_gxixc")
+shape = SubResource("CircleShape2D_3o872")
 
-[connection signal="timeout" from="Timer" to="." method="CreatePath"]
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_30n5e")

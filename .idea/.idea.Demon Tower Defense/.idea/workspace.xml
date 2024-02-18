@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ed2dae-2b83-44ad-a4cd-8008574c23a5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/characters/demons/TestDemon.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Demon Tower Defense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Demon Tower Defense/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/characters/humans/TestHuman.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/characters/humans/TestHuman.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_2d.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/node_2d.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_barricade.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/test_barricade.tscn" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +90,7 @@
       <workItem from="1708146387551" duration="6424000" />
       <workItem from="1708152972061" duration="5173000" />
       <workItem from="1708158569111" duration="7032000" />
-      <workItem from="1708219385769" duration="4046000" />
+      <workItem from="1708219385769" duration="5518000" />
     </task>
     <servers />
   </component>

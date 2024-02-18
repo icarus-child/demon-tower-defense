@@ -28,6 +28,7 @@ public partial class Entity : CharacterBody2D
 	private Area2D aggroRange;
 	private Area2D attackRange;
 	private readonly List<Node2D> targetOptions = new();
+	private AnimatedSprite2D _sprite;
 	
     public override void _Ready()
     {
@@ -40,6 +41,14 @@ public partial class Entity : CharacterBody2D
 		aggroRange.BodyExited += body => {
 			targetOptions.Remove(body);
 		};
+		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_sprite.Play("walk");
+    }
+
+    public override void _Process(double delta)
+    {
+	    if (Target == null) return;
+	    //_sprite.FlipV = Target.Position.X > Position.X; // Make sprite face the target
     }
 
 	public override void _PhysicsProcess(double delta)
@@ -79,7 +88,8 @@ public partial class Entity : CharacterBody2D
 
 	private Node2D GetClosestTargetable()
 	{
-		return targetOptions.MinBy(node => {
+		return targetOptions.MinBy(node =>
+		{
 			return node.GlobalPosition.DistanceTo(GlobalPosition);
 		});
 	}
@@ -93,14 +103,11 @@ public partial class Entity : CharacterBody2D
 	
 	private void Die()
 	{
+		if (EntityTeam == Team.Humans) Game.Souls++;
 		QueueFree();
 	}
 }
-    public override void _Process(double delta)
-    {
-	    // Make sprite face the target
-	    Sprite.FlipV = Target.Position.X > Position.X;
-    }
+
 	/*public override void _Input(InputEvent @event)
 	{
 
@@ -124,10 +131,4 @@ public partial class Entity : CharacterBody2D
 			}
 		}
 	}*/
-	private void Die()
-	{
-		if (EntityTeam == Team.Humans) Game.Souls++;
-		QueueFree();
-	}
-		Sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		Sprite.Play("walk");
+
