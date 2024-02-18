@@ -162,6 +162,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 
 	private void CreatePath()
 	{
+		if (Target is null) return;
 		_navigationAgent.TargetPosition = Target.GlobalPosition;
 	}
 
