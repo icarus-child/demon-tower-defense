@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://div4dag4qrnn4"]
+[gd_scene load_steps=11 format=3 uid="uid://cgf7vywjw8irs"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
 [ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_tunxx"]
@@ -6,18 +6,18 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r22i7"]
-radius = 54.0093
+radius = 85.0059
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
-radius = 13.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k3x4x"]
-atlas = ExtResource("2_tunxx")
-region = Rect2(0, 0, 768, 1024)
+radius = 84.214
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdupu"]
 atlas = ExtResource("2_tunxx")
 region = Rect2(2304, 0, 768, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8eyf"]
+atlas = ExtResource("2_tunxx")
+region = Rect2(0, 0, 768, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_waxah"]
 atlas = ExtResource("2_tunxx")
@@ -31,13 +31,18 @@ region = Rect2(1536, 0, 768, 1024)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k3x4x")
-}, {
-"duration": 7.0,
 "texture": SubResource("AtlasTexture_bdupu")
 }],
 "loop": true,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8eyf")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -84,8 +89,7 @@ debug_color = Color(0.945098, 0.207843, 0.27451, 0.419608)
 position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
-animation = &"attack"
-frame_progress = 0.326496
+animation = &"walk"
 
 [node name="MouseClicker" type="Area2D" parent="."]
 

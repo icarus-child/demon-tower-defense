@@ -3,8 +3,8 @@ using Godot;
 public partial class Barrier : Node2D
 {
 
-	public int Health { get => _health; }
-	[Export] private int _health = 100;
+	public float Health { get => _health; }
+	[Export] private float _health = 100;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
