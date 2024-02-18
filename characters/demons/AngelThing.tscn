@@ -66,6 +66,7 @@ script = ExtResource("1_eovuy")
 EntityTeam = 1
 _health = 40.0
 _damage = 20.0
+_ranged = true
 _attackCooldown = 1.5
 _wallMultiplier = 1.0
 _enemyMultiplier = 1.0

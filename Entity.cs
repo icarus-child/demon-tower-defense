@@ -14,6 +14,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 	[Export] public Team EntityTeam { get; set; }
 	[Export] private float _health;
 	[Export] private float _damage;
+	[Export] private bool _ranged;
 	[Export] private double _attackCooldown;
 	[Export] private float _wallMultiplier;
 	[Export] private float _enemyMultiplier;
@@ -36,6 +37,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 	private ProgressBar _healthBar;
 	private float _maxHealth;
 	private Area2D _healZone;
+	private PackedScene _projectile;
 	
     public override void _Ready()
     {
@@ -71,6 +73,7 @@ public partial class Entity : CharacterBody2D, IDamageable
 		_mouseClicker = GetNode<Area2D>("MouseClicker");
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_healZone = GetNode<Area2D>("/root/Node/Game/TileMap/Portal/HealZone");
+		_projectile = GD.Load<PackedScene>("res://characters/Projectile.tscn");
 		_aggroRange.BodyEntered += body => {
 			_targetOptions.Add(body);
 		};
@@ -122,11 +125,6 @@ public partial class Entity : CharacterBody2D, IDamageable
 			_health += Mathf.Min((float) (2 * delta), _maxHealth - _health);
 		}
 
-		if (!IsInstanceValid(Target)) Target = null;
-		if (Target is null) {
-			if (_targetOptions.Count != 0) Target = GetClosestTargetable();
-			else if (EntityTeam == Team.Humans) Target = Portal;
-		}
 
 	    // Make this not shit later
 	    try {
@@ -138,11 +136,14 @@ public partial class Entity : CharacterBody2D, IDamageable
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (Target is Marker2D && EndOfPathReached() && _targetOptions.Count == 1)
-		{
-			Target = GetClosestTargetable();
-		} else if (Target is null) {
-			return;
+		if (!IsInstanceValid(Target)) Target = null;
+		if (Target is null || (Target is Marker2D && EndOfPathReached())) {
+			if (_targetOptions.Count != 0) Target = GetClosestTargetable();
+			else if (EntityTeam == Team.Humans) Target = Portal;
+			else {
+				_sprite.Play("idle");
+				return;
+			}
 		}
 
 		if (!_attackRange.OverlapsBody(Target))
@@ -159,6 +160,16 @@ public partial class Entity : CharacterBody2D, IDamageable
 				_sprite.Play("attack");
 				if (Target is IDamageable weezer) {
 					weezer.TakeDamage(_damage * ((Target is Entity) ? _enemyMultiplier : _wallMultiplier), this);
+				}
+
+				if (_ranged) {
+					var projectile = _projectile.Instantiate<Node2D>();
+					GetNode("/root/Node/Game/TileMap").AddChild(projectile);
+					projectile.GlobalPosition = new(GlobalPosition.X, GlobalPosition.Y - 20);
+
+					Tween tween = projectile.CreateTween().SetTrans(Tween.TransitionType.Linear);
+					tween.TweenProperty(projectile, "global_position", new Vector2(Target.GlobalPosition.X, Target.GlobalPosition.Y - 10), 0.12).FromCurrent();
+					tween.TweenCallback(Callable.From(() => projectile.QueueFree()));
 				}
 			}
 		}
