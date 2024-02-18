@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://lnc715cv4xxu"]
+[gd_scene load_steps=11 format=3 uid="uid://du0lg7q2luvkf"]
 
-[ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
-[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_tunxx"]
+[ext_resource type="Script" path="res://Entity.cs" id="1_ppq50"]
+[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_wa5oa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
 
@@ -11,30 +11,30 @@ radius = 54.0093
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
 radius = 13.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_12x8n"]
-atlas = ExtResource("2_tunxx")
-region = Rect2(0, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hw0y"]
+atlas = ExtResource("2_wa5oa")
+region = Rect2(0, 2048, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_165m1"]
-atlas = ExtResource("2_tunxx")
-region = Rect2(2304, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttoo5"]
+atlas = ExtResource("2_wa5oa")
+region = Rect2(2304, 2048, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ognfs"]
-atlas = ExtResource("2_tunxx")
-region = Rect2(768, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4421"]
+atlas = ExtResource("2_wa5oa")
+region = Rect2(768, 2048, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_thn3f"]
-atlas = ExtResource("2_tunxx")
-region = Rect2(1536, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut75l"]
+atlas = ExtResource("2_wa5oa")
+region = Rect2(1536, 2048, 768, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_12x8n")
+"texture": SubResource("AtlasTexture_4hw0y")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_165m1")
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ttoo5")
 }],
 "loop": true,
 "name": &"attack",
@@ -42,10 +42,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ognfs")
+"texture": SubResource("AtlasTexture_p4421")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_thn3f")
+"texture": SubResource("AtlasTexture_ut75l")
 }],
 "loop": true,
 "name": &"walk",
@@ -54,7 +54,7 @@ animations = [{
 
 [node name="Farmer" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_hw863")
+script = ExtResource("1_ppq50")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n4io4")
@@ -82,6 +82,7 @@ debug_color = Color(0.945098, 0.207843, 0.27451, 0.419608)
 position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
-animation = &"walk"
+animation = &"attack"
+frame_progress = 0.81155
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]

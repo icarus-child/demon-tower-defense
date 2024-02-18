@@ -53,6 +53,7 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="info" type="Control" parent="Player UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
