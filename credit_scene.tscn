@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnqeynu08bt0b"]
+
+[ext_resource type="Texture2D" uid="uid://bsvc2uex11gow" path="res://assets/UI assets/credits.png" id="1_mfgf5"]
+[ext_resource type="Script" path="res://credit_scene.gd" id="1_nk52n"]
+[ext_resource type="Texture2D" uid="uid://bvpvm513ygopv" path="res://assets/UI assets/Main_Developer.webp" id="2_55gi1"]
+[ext_resource type="Texture2D" uid="uid://0d8yoixxb2vw" path="res://assets/UI assets/Meier.webp" id="3_kpt2m"]
+[ext_resource type="Texture2D" uid="uid://cpjrbrwwv2tjn" path="res://assets/UI assets/Stevenson.webp" id="4_pso4l"]
+[ext_resource type="Texture2D" uid="uid://cb746evr10dwk" path="res://assets/UI assets/Supporting_Developer.webp" id="5_br63v"]
+[ext_resource type="Texture2D" uid="uid://dijmrxdk0ac07" path="res://assets/UI assets/Lee.webp" id="6_jqmjw"]
+[ext_resource type="Texture2D" uid="uid://bxf1npvlka4qq" path="res://assets/UI assets/Artist.webp" id="7_esl2c"]
+[ext_resource type="Texture2D" uid="uid://eegdig36krmp" path="res://assets/UI assets/Sandoval.webp" id="8_uecxd"]
+[ext_resource type="Texture2D" uid="uid://dkh6ldutuqg1k" path="res://assets/UI assets/play.png" id="10_cegob"]
+
+[node name="creditScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nk52n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.611765, 0, 0, 1)
+
+[node name="Credits" type="Sprite2D" parent="."]
+position = Vector2(600, 212)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_mfgf5")
+offset = Vector2(0, -406.31)
+
+[node name="credits" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 470.0
+offset_top = 227.0
+offset_right = 510.0
+offset_bottom = 267.0
+
+[node name="MainDeveloper" type="Sprite2D" parent="credits"]
+position = Vector2(-47, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_55gi1")
+
+[node name="Meier" type="Sprite2D" parent="credits"]
+position = Vector2(252, 27)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_kpt2m")
+
+[node name="Stevenson" type="Sprite2D" parent="credits"]
+position = Vector2(277, 63)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_pso4l")
+
+[node name="SupportingDeveloper" type="Sprite2D" parent="credits"]
+position = Vector2(0, 125)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_br63v")
+
+[node name="Lee" type="Sprite2D" parent="credits"]
+position = Vector2(241, 167)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_jqmjw")
+
+[node name="Artist" type="Sprite2D" parent="credits"]
+position = Vector2(-130, 223)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_esl2c")
+
+[node name="Sandoval" type="Sprite2D" parent="credits"]
+position = Vector2(277, 260)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_uecxd")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 525.0
+offset_top = 546.0
+offset_right = 525.0
+offset_bottom = 546.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+icon = ExtResource("10_cegob")
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

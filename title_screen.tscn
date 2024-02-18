@@ -1,0 +1,182 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx0w03fb0pbe3"]
+
+[ext_resource type="Texture2D" uid="uid://dkh6ldutuqg1k" path="res://assets/UI assets/play.png" id="1_kuupq"]
+[ext_resource type="Script" path="res://title_screen.gd" id="1_t8bwl"]
+[ext_resource type="Texture2D" uid="uid://bup0rxdps77ku" path="res://assets/UI assets/title.png" id="1_ydgpx"]
+[ext_resource type="Texture2D" uid="uid://bsvc2uex11gow" path="res://assets/UI assets/credits.png" id="2_ovl8w"]
+
+[sub_resource type="Animation" id="Animation_r0s1g"]
+resource_name = "Fade In"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../buttons/creditButton:icon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [null, ExtResource("2_ovl8w")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../buttons/playButton:icon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [null, ExtResource("1_kuupq")]
+}
+
+[sub_resource type="Animation" id="Animation_b4k83"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../buttons/creditButton:icon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ovl8w")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../buttons/playButton:icon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_kuupq")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6hdg"]
+_data = {
+"Fade In": SubResource("Animation_r0s1g"),
+"RESET": SubResource("Animation_b4k83")
+}
+
+[node name="titleScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t8bwl")
+
+[node name="firstBackground" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="firstBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.611765, 0, 0, 1)
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(578, 249)
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("1_ydgpx")
+
+[node name="animateBlack" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../animateBlack")
+libraries = {
+"": SubResource("AnimationLibrary_k6hdg")
+}
+autoplay = "Fade In"
+
+[node name="buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="playButton" type="Button" parent="buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = 188.0
+offset_right = 826.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("1_kuupq")
+flat = true
+
+[node name="creditButton" type="Button" parent="buttons"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 208.0
+offset_right = 1248.0
+offset_bottom = 820.0
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_ovl8w")
+flat = true
+
+[connection signal="pressed" from="buttons/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="buttons/creditButton" to="." method="_on_credit_button_pressed"]

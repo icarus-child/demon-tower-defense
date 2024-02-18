@@ -131,7 +131,6 @@ public partial class Entity : CharacterBody2D, IDamageable
 		    int i = _navigationAgent.GetCurrentNavigationPathIndex() - 2;
 		    _sprite.FlipH = _navigationAgent.GetCurrentNavigationPath()[i].X > ToGlobal(Position).X; // Make sprite face the target
 	    } catch (IndexOutOfRangeException e) {}
-
     }
 
 	public override void _PhysicsProcess(double delta)
