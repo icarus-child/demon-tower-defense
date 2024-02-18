@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dt5cnusallb2l"]
+[gd_scene load_steps=12 format=3 uid="uid://e8ve6b35t152"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_5ccqh"]
 [ext_resource type="Texture2D" uid="uid://elj4dao3qmg7" path="res://assets/dudes/litteguy.png" id="2_dglxr"]
@@ -6,6 +6,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yvgg4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r22i7"]
 radius = 54.0093
@@ -85,11 +86,13 @@ wait_time = 0.1
 autostart = true
 
 [node name="AggroRange" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
 shape = SubResource("CircleShape2D_r22i7")
 
 [node name="AttackRange" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_6ds64")

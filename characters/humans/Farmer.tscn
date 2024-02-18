@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bs3c6vvutmvgw"]
+[gd_scene load_steps=11 format=3 uid="uid://div4dag4qrnn4"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
 [ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_tunxx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
+radius = 5.09902
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r22i7"]
 radius = 54.0093
@@ -58,7 +59,8 @@ animations = [{
 }]
 
 [node name="Farmer" type="CharacterBody2D"]
-collision_layer = 4
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_hw863")
 _health = 20.0
 _damage = 4.0
@@ -77,11 +79,13 @@ wait_time = 0.1
 autostart = true
 
 [node name="AggroRange" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
 shape = SubResource("CircleShape2D_r22i7")
 
 [node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_6ds64")
