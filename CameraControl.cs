@@ -8,16 +8,16 @@ public partial class CameraControl : Camera2D
 
 	private Vector2 _initialDragPos;
 
-	public override void _Process(double delta)
+	/*public override void _Process(double delta)
 	{
 		// Camera Slide
 		Vector2 mousePos = GetViewport().GetMousePosition();
 		Vector2 dist = mousePos - GetViewportRect().Size / 2;
 		if (Input.IsActionPressed("drag") || dist.Abs().X < _slideThreshold.X && dist.Abs().Y < _slideThreshold.Y) return;
 		Position = Position.Lerp(dist, (float) delta);
-	}
+	}*/
 
-	public Vector2 GetZoom()
+	private Vector2 GetZoom()
 	{
 		return new Vector2(1 / Zoom.X, 1 / Zoom.Y);
 	}

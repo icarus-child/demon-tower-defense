@@ -35,10 +35,13 @@ public partial class Game : Node2D
 
 		RegisterDemon("res://characters/demons/LilGuy.tscn", 0.3f);
 		RegisterDemon("res://characters/demons/AngelThing.tscn", 0.2f);
+		RegisterDemon("res://characters/demons/BigBoy.tscn", 0.1F);
 
 		RegisterHuman("res://characters/humans/Farmer.tscn", 0.3f);
 		RegisterHuman("res://characters/humans/SaltyBoi.tscn", 0.25F);
 		RegisterHuman("res://characters/humans/Wizard.tscn", 0.1F);
+		RegisterHuman("res://characters/humans/Priest.tscn", 0.15F);
+		RegisterHuman("res://characters/humans/Brute.tscn", 0.2F);
 		SpawnHuman();
 	}
 
@@ -52,6 +55,7 @@ public partial class Game : Node2D
 	{
 		if (_souls < _cost) return;
 		_souls -= _cost;
+		_soulInfo.Text = "Souls: " + _souls;
 
 		Entity demon = _demons.RandomElementByWeight(e => e.Value).Key.Instantiate<Entity>();
 		GetNode("TileMap").AddChild(demon.Cursor);

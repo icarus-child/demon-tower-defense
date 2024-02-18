@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bminocv4kqh0x"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_ppq50"]
-[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_wa5oa"]
+[ext_resource type="Texture2D" uid="uid://q3r0bbgqywew" path="res://assets/dudes/human.png" id="2_43wfj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
 
@@ -11,27 +11,27 @@ radius = 54.0093
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
 radius = 18.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttoo5"]
-atlas = ExtResource("2_wa5oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf4f2"]
+atlas = ExtResource("2_43wfj")
 region = Rect2(2304, 2048, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5np6h"]
-atlas = ExtResource("2_wa5oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi3dq"]
+atlas = ExtResource("2_43wfj")
 region = Rect2(0, 2048, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p4421"]
-atlas = ExtResource("2_wa5oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny76q"]
+atlas = ExtResource("2_43wfj")
 region = Rect2(768, 2048, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ut75l"]
-atlas = ExtResource("2_wa5oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_keje4"]
+atlas = ExtResource("2_43wfj")
 region = Rect2(1536, 2048, 768, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_ttoo5")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf4f2")
 }],
 "loop": false,
 "name": &"attack",
@@ -39,7 +39,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5np6h")
+"texture": SubResource("AtlasTexture_wi3dq")
 }],
 "loop": true,
 "name": &"idle",
@@ -47,10 +47,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p4421")
+"texture": SubResource("AtlasTexture_ny76q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ut75l")
+"texture": SubResource("AtlasTexture_keje4")
 }],
 "loop": true,
 "name": &"walk",
@@ -99,7 +99,8 @@ debug_color = Color(0.945098, 0.207843, 0.27451, 0.419608)
 position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
-animation = &"attack"
+animation = &"walk"
+frame_progress = 0.976891
 
 [node name="MouseClicker" type="Area2D" parent="."]
 
