@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dvh2qc02a1rw5" path="res://assets/tiles/portal.png" id="4_78goc"]
 [ext_resource type="Script" path="res://healthBar.gd" id="5_i8ss5"]
 [ext_resource type="Texture2D" uid="uid://dtroxnok8lhvi" path="res://assets/UI assets/healthbarUnder.png" id="6_icv6o"]
-[ext_resource type="PackedScene" uid="uid://dt5cnusallb2l" path="res://characters/demons/Demon.tscn" id="7_esb70"]
+[ext_resource type="PackedScene" uid="uid://e8ve6b35t152" path="res://characters/demons/Demon.tscn" id="7_esb70"]
 [ext_resource type="Texture2D" uid="uid://cr64v0cntdohh" path="res://assets/UI assets/healthbarProgress.png" id="7_ij3uw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_061b6"]
@@ -45,6 +45,7 @@ position = Vector2(13, 103)
 
 [node name="Portal" type="StaticBody2D" parent="TileMap"]
 position = Vector2(603, 314)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Portal"]
 position = Vector2(0.354859, -5.89505)
