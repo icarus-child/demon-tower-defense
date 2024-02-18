@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8ed2dae-2b83-44ad-a4cd-8008574c23a5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Demon Tower Defense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Demon Tower Defense/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/characters/humans/Farmer.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/characters/humans/Farmer.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_2d.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/node_2d.tscn" afterDir="false" />
-    </list>
+    <list default="true" id="e8ed2dae-2b83-44ad-a4cd-8008574c23a5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +85,7 @@
       <workItem from="1708146387551" duration="6424000" />
       <workItem from="1708152972061" duration="5173000" />
       <workItem from="1708158569111" duration="7032000" />
-      <workItem from="1708219385769" duration="7012000" />
+      <workItem from="1708219385769" duration="7401000" />
     </task>
     <servers />
   </component>
