@@ -61,8 +61,6 @@ animations = [{
 }]
 
 [node name="Demon" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("1_5ccqh")
 EntityTeam = 1
 speed = 40.0

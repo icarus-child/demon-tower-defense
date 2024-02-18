@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccbwvmpmmeycy"]
+[gd_scene load_steps=12 format=3 uid="uid://brbftphc7k0tr"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_eovuy"]
 [ext_resource type="Texture2D" uid="uid://d2s2a68gmbcvk" path="res://assets/dudes/angel.png" id="2_nwplv"]
@@ -61,7 +61,6 @@ animations = [{
 }]
 
 [node name="Demon" type="CharacterBody2D"]
-collision_mask = 0
 script = ExtResource("1_eovuy")
 EntityTeam = 1
 speed = 40.0
