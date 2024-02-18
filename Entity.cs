@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
-public partial class Entity : CharacterBody2D
+public partial class Entity : CharacterBody2D, IDamageable
 {
 	public enum Team
 	{
@@ -168,7 +168,7 @@ public partial class Entity : CharacterBody2D
 		});
 	}
 
-	public void TakeDamage(int damage) {
+	void IDamageable.TakeDamage(int damage) {
 		// never go below 0 hp
 		_health -= Mathf.Min(damage, _health);
 		if (_health == 0) Die();

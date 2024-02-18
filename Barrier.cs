@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Barrier : Node2D
+public partial class Barrier : Node2D, IDamageable
 {
 
 	public float Health { get => _health; }
@@ -16,7 +16,7 @@ public partial class Barrier : Node2D
 	{
 	}
 	
-	public void TakeDamage(int damage)
+	void IDamageable.TakeDamage(int damage)
 	{
 		// never go below 0 hp
 		_health -= Mathf.Min(damage, _health);
