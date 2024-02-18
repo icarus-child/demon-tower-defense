@@ -13,7 +13,6 @@ public partial class Portal : StaticBody2D, IDamageable
 
 	void IDamageable.TakeDamage(float damage, Node2D attacker) {
 		_health -= Mathf.Min(damage, _health);
-		GD.Print(_health);
 		_healthBar.Value = _health;
 		if (_health == 0) _lost = true;
 	}
@@ -22,8 +21,13 @@ public partial class Portal : StaticBody2D, IDamageable
 	{
 		if (!_lost) return;
 
-		var tween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Elastic);
-		tween.TweenProperty(GetParent(), "modulate", new Color(1, 1, 1, 0), 1.0f);
+		Game.Camera.SetProcessInput(false);
+		foreach (var child in GetChildren())
+		{
+			child.SetProcess(false);
+			child.SetProcessInput(false);
+		}
 
+		GetNode<TextureRect>("/root/Node/Game/UI/GameOver").Show();
 	}
 }

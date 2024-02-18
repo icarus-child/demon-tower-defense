@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxdurw27p7yyq"]
+[gd_scene load_steps=20 format=3 uid="uid://bxdurw27p7yyq"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_3ijct"]
 [ext_resource type="Script" path="res://CameraControl.cs" id="1_gmnbi"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c2xm8gbhlxv2v" path="res://characters/demons/LilGuy.tscn" id="7_esb70"]
 [ext_resource type="Texture2D" uid="uid://bjatewb1wnf05" path="res://assets/tiles/hell_floor.png" id="7_pp34u"]
 [ext_resource type="PackedScene" uid="uid://ccbwvmpmmeycy" path="res://characters/demons/AngelThing.tscn" id="9_54up0"]
+[ext_resource type="Texture2D" uid="uid://xn0bluc6hyjs" path="res://assets/UI assets/gameover.png" id="12_h1fvd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tmicm"]
 vertices = PackedVector2Array(384, 0, 0, 192, -384, 0, 0, -192)
@@ -236,6 +237,15 @@ theme_override_font_sizes/font_size = 30
 text = "00:00"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="GameOver" type="TextureRect" parent="Game/UI"]
+visible = false
+offset_left = -1.14441e-05
+offset_top = 2.0
+offset_right = 2048.0
+offset_bottom = 1026.0
+scale = Vector2(0.56244, 0.631704)
+texture = ExtResource("12_h1fvd")
 
 [connection signal="finished" from="Game/AudioStreamPlayer2D" to="Game" method="RestartSong"]
 [connection signal="timeout" from="Game/TileMap/Spawn" to="Game" method="SpawnHuman"]
