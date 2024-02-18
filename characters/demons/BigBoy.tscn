@@ -1,38 +1,40 @@
-[gd_scene load_steps=12 format=3 uid="uid://div4dag4qrnn4"]
+[gd_scene load_steps=12 format=3 uid="uid://bsi41d7b4homb"]
 
-[ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
-[ext_resource type="Texture2D" uid="uid://q3r0bbgqywew" path="res://assets/dudes/human.png" id="2_yyjct"]
+[ext_resource type="Script" path="res://Entity.cs" id="1_7qndg"]
+[ext_resource type="Texture2D" uid="uid://c34ow8b5v7r0m" path="res://assets/dudes/big.png" id="2_aque8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yvgg4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
-radius = 5.09902
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r22i7"]
 radius = 54.0093
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
-radius = 12.0
+radius = 13.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_knwsj"]
-atlas = ExtResource("2_yyjct")
-region = Rect2(2304, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gltve"]
+atlas = ExtResource("2_aque8")
+region = Rect2(2304, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f04f5"]
-atlas = ExtResource("2_yyjct")
-region = Rect2(0, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnuae"]
+atlas = ExtResource("2_aque8")
+region = Rect2(0, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jfi3c"]
-atlas = ExtResource("2_yyjct")
-region = Rect2(768, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7f7k"]
+atlas = ExtResource("2_aque8")
+region = Rect2(768, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cxdn"]
-atlas = ExtResource("2_yyjct")
-region = Rect2(1536, 1024, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuyur"]
+atlas = ExtResource("2_aque8")
+region = Rect2(1536, 0, 768, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_knwsj")
+"texture": SubResource("AtlasTexture_gltve")
 }],
 "loop": false,
 "name": &"attack",
@@ -40,7 +42,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f04f5")
+"texture": SubResource("AtlasTexture_gnuae")
 }],
 "loop": true,
 "name": &"idle",
@@ -48,28 +50,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jfi3c")
+"texture": SubResource("AtlasTexture_g7f7k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3cxdn")
+"texture": SubResource("AtlasTexture_vuyur")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 7.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63hf6"]
-
-[node name="Farmer" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("1_hw863")
-_health = 30.0
+[node name="Demon" type="CharacterBody2D"]
+script = ExtResource("1_7qndg")
+EntityTeam = 1
+_health = 70.0
 _damage = 10.0
-_attackCooldown = 1.5
+_attackCooldown = 1.0
 _wallMultiplier = 1.0
 _enemyMultiplier = 1.0
-speed = 30.0
+speed = 55.0
+
+[node name="MouseClicker" type="Area2D" parent="."]
+position = Vector2(0, 1.395)
+scale = Vector2(1.195, 1.195)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
+position = Vector2(0, -11.88)
+scale = Vector2(0.99, 0.99)
+shape = SubResource("CapsuleShape2D_yvgg4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n4io4")
@@ -83,13 +91,13 @@ wait_time = 0.1
 autostart = true
 
 [node name="AggroRange" type="Area2D" parent="."]
-collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
 shape = SubResource("CircleShape2D_r22i7")
 
 [node name="AttackRange" type="Area2D" parent="."]
-collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_6ds64")
@@ -99,13 +107,6 @@ debug_color = Color(0.945098, 0.207843, 0.27451, 0.419608)
 position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
-animation = &"walk"
-
-[node name="MouseClicker" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
-position = Vector2(0, -11.88)
-scale = Vector2(0.99, 0.99)
-shape = SubResource("CapsuleShape2D_63hf6")
+animation = &"attack"
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]

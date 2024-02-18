@@ -52,3 +52,7 @@ move={
 2d_physics/layer_1="Friendly"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="3"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

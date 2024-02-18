@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cgf7vywjw8irs"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_hw863"]
-[ext_resource type="Texture2D" uid="uid://bgwlokxv8rxp5" path="res://assets/dudes/humans.png" id="2_tunxx"]
+[ext_resource type="Texture2D" uid="uid://q3r0bbgqywew" path="res://assets/dudes/human.png" id="2_7jdr1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
 radius = 5.0
@@ -12,27 +12,27 @@ radius = 85.0059
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
 radius = 84.214
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bdupu"]
-atlas = ExtResource("2_tunxx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_536oe"]
+atlas = ExtResource("2_7jdr1")
 region = Rect2(2304, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s8eyf"]
-atlas = ExtResource("2_tunxx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgqbs"]
+atlas = ExtResource("2_7jdr1")
 region = Rect2(0, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_waxah"]
-atlas = ExtResource("2_tunxx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0urkc"]
+atlas = ExtResource("2_7jdr1")
 region = Rect2(768, 0, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5q3y"]
-atlas = ExtResource("2_tunxx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtgb6"]
+atlas = ExtResource("2_7jdr1")
 region = Rect2(1536, 0, 768, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bdupu")
+"texture": SubResource("AtlasTexture_536oe")
 }],
 "loop": true,
 "name": &"attack",
@@ -40,7 +40,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s8eyf")
+"texture": SubResource("AtlasTexture_bgqbs")
 }],
 "loop": true,
 "name": &"idle",
@@ -48,10 +48,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_waxah")
+"texture": SubResource("AtlasTexture_0urkc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u5q3y")
+"texture": SubResource("AtlasTexture_gtgb6")
 }],
 "loop": true,
 "name": &"walk",

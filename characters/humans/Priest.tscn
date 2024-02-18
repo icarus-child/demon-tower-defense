@@ -1,37 +1,38 @@
-[gd_scene load_steps=12 format=3 uid="uid://bminocv4kqh0x"]
+[gd_scene load_steps=12 format=3 uid="uid://iidkqo5e1doh"]
 
-[ext_resource type="Script" path="res://Entity.cs" id="1_ppq50"]
-[ext_resource type="Texture2D" uid="uid://q3r0bbgqywew" path="res://assets/dudes/human.png" id="2_43wfj"]
+[ext_resource type="Script" path="res://Entity.cs" id="1_iaj3x"]
+[ext_resource type="Texture2D" uid="uid://q3r0bbgqywew" path="res://assets/dudes/human.png" id="2_nbdio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4io4"]
+radius = 5.09902
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r22i7"]
 radius = 54.0093
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ds64"]
-radius = 18.0
+radius = 12.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pf4f2"]
-atlas = ExtResource("2_43wfj")
-region = Rect2(2304, 2048, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_afn7k"]
+atlas = ExtResource("2_nbdio")
+region = Rect2(2304, 3072, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wi3dq"]
-atlas = ExtResource("2_43wfj")
-region = Rect2(0, 2048, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sydae"]
+atlas = ExtResource("2_nbdio")
+region = Rect2(0, 3072, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ny76q"]
-atlas = ExtResource("2_43wfj")
-region = Rect2(768, 2048, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2830"]
+atlas = ExtResource("2_nbdio")
+region = Rect2(768, 3072, 768, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_keje4"]
-atlas = ExtResource("2_43wfj")
-region = Rect2(1536, 2048, 768, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rc2b"]
+atlas = ExtResource("2_nbdio")
+region = Rect2(1536, 3072, 768, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mp3y6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pf4f2")
+"texture": SubResource("AtlasTexture_afn7k")
 }],
 "loop": false,
 "name": &"attack",
@@ -39,7 +40,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wi3dq")
+"texture": SubResource("AtlasTexture_sydae")
 }],
 "loop": true,
 "name": &"idle",
@@ -47,30 +48,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ny76q")
+"texture": SubResource("AtlasTexture_a2830")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_keje4")
+"texture": SubResource("AtlasTexture_7rc2b")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_popvf"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63hf6"]
 
-[node name="SaltyBoi" type="CharacterBody2D"]
+[node name="Priest" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_ppq50")
-_health = 40.0
-_damage = 15.0
-_attackCooldown = 2.5
-_doesAoe = true
-_aoeRange = 20.0
-_wallMultiplier = 0.5
-_enemyMultiplier = 1.5
-speed = 15.0
+script = ExtResource("1_iaj3x")
+_health = 30.0
+_damage = 10.0
+_attackCooldown = 1.5
+_wallMultiplier = 1.0
+_enemyMultiplier = 1.0
+speed = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n4io4")
@@ -84,6 +83,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="AggroRange" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
 shape = SubResource("CircleShape2D_r22i7")
@@ -100,13 +100,14 @@ position = Vector2(0, -13)
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_mp3y6")
 animation = &"walk"
-frame_progress = 0.976891
 
 [node name="MouseClicker" type="Area2D" parent="."]
+position = Vector2(-2.41, 1.655)
+scale = Vector2(1.195, 1.195)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseClicker"]
 position = Vector2(0, -11.88)
 scale = Vector2(0.99, 0.99)
-shape = SubResource("CapsuleShape2D_popvf")
+shape = SubResource("CapsuleShape2D_63hf6")
 
 [connection signal="timeout" from="Timer" to="." method="CreatePath"]
